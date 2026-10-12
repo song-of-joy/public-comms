@@ -43,6 +43,11 @@ thead th{background:var(--accent-soft);font-family:var(--font-display);font-weig
 tbody th{font-weight:600;width:20%}
 tr:last-child td,tr:last-child th{border-bottom:0}
 td.num{text-align:right;white-space:nowrap}
+/* data tables: figures right-aligned under right-aligned headers; text-only tables and columns opt out */
+.tbl td{text-align:right}
+.tbl thead th{text-align:right}
+.tbl thead th:first-child{text-align:left}
+.tbl .txt, .text-table td, .text-table thead th{text-align:left}
 tr.key td,tr.key th{background:var(--accent-soft)}
 .small{display:block;color:var(--muted);font-size:.78rem}
 
@@ -79,11 +84,11 @@ a{color:var(--accent)}
   <h2><span class="n">01</span>Minimum wage benchmark</h2>
   <p class="note">Maharashtra Zone I (Pune Municipal Corporation limits), special allowance notified 5 Aug 2026, valid 1 Jul–31 Dec 2026.</p>
   <div class="tbl"><table>
-    <thead><tr><th>Category</th><th>Basic</th><th>Special allowance (DA)</th><th>Monthly minimum</th><th>Per day</th><th>Usually applied to</th></tr></thead>
+    <thead><tr><th>Category</th><th>Basic</th><th>Special allowance (DA)</th><th>Monthly minimum</th><th>Per day</th><th class="txt">Usually applied to</th></tr></thead>
     <tbody>
-      <tr><th>Unskilled</th><td class="num">10,021</td><td class="num">4,134</td><td class="num"><b>14,155</b></td><td class="num">544.42</td><td>Legal floor for any worker</td></tr>
-      <tr><th>Semi-skilled</th><td class="num">10,856</td><td class="num">4,134</td><td class="num"><b>14,990</b></td><td class="num">576.54</td><td>Security guard (industry practice)</td></tr>
-      <tr><th>Skilled</th><td class="num">11,632</td><td class="num">4,134</td><td class="num"><b>15,766</b></td><td class="num">606.38</td><td>Security supervisor</td></tr>
+      <tr><th>Unskilled</th><td class="num">10,021</td><td class="num">4,134</td><td class="num"><b>14,155</b></td><td class="num">544.42</td><td class="txt">Legal floor for any worker</td></tr>
+      <tr><th>Semi-skilled</th><td class="num">10,856</td><td class="num">4,134</td><td class="num"><b>14,990</b></td><td class="num">576.54</td><td class="txt">Security guard (industry practice)</td></tr>
+      <tr><th>Skilled</th><td class="num">11,632</td><td class="num">4,134</td><td class="num"><b>15,766</b></td><td class="num">606.38</td><td class="txt">Security supervisor</td></tr>
     </tbody>
   </table></div>
   <p class="note">These rates are for an 8-hour day. Every quote prices a 12-hour shift on this 8-hour wage with no overtime. That is common in the trade but not what the law requires. Pune Security Guard Board rates apply only to board-registered guards; I could not verify the current board rate from an official source.</p>
@@ -150,7 +155,7 @@ a{color:var(--accent)}
   <div class="tbl"><table>
     <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
     <tbody>
-      <tr><th>Employer PF 13%</th><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle"><span class="c warn">No breakup</span><span class="small">"Semi-compliance", undefined</span></td><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle"><span class="c bad">None</span><span class="small">"Without compliance"</span></td><td>1,950 <span class="c ok">Yes</span></td></tr>
+      <tr><th>Employer PF 13%</th><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c warn">No breakup</span><span class="small">"Semi-compliance", undefined</span></td><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c bad">None</span><span class="small">"Without compliance"</span></td><td>1,950 <span class="c ok">Yes</span></td></tr>
       <tr><th>Employer ESIC 3.25%</th><td>620 <span class="c ok">Yes</span></td><td>570 <span class="c ok">Yes</span></td><td>460 <span class="c warn">Low</span><span class="small">on basic+DA only; own label says gross</span></td></tr>
       <tr><th>Bonus 8.33%</th><td>1,249 <span class="c ok">Yes</span></td><td>1,253 <span class="c ok">Yes</span></td><td>1,179 <span class="c ok">Yes</span></td></tr>
       <tr><th>Leave wages</th><td>600 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td>943 <span class="c ok">Yes</span></td></tr>
@@ -164,7 +169,7 @@ a{color:var(--accent)}
   <p class="note">Beta Force bills 4 national holidays extra (incl. 2 Oct). If an agency skips PF or ESIC, the society as principal employer can be held liable.</p>
 </section>
 
-<section>
+<section class="text-table">
   <h2><span class="n">06</span>Paperwork and contract terms</h2>
   <div class="tbl"><table>
     <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
