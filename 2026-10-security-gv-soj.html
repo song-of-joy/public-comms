@@ -1,0 +1,230 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Song of Joy Security Bids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: single reading column, wide tables scroll inside their own frame; agencies always in the same column order */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#17202b; --muted:#5b6675; --line:#dde2e8;
+  --accent:#2b4f7a; --accent-soft:#e6edf5;
+  --ok:#1d7a4c; --ok-bg:#e3f3ea; --warn:#9a6200; --warn-bg:#fbf0d9; --bad:#b3261e; --bad-bg:#fbe5e3;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11161d; --surface:#18202a; --fg:#e5e9ee; --muted:#9aa5b3; --line:#2a3542;
+  --accent:#8fb3dc; --accent-soft:#1f2c3b;
+  --ok:#6cc596; --ok-bg:#16301f; --warn:#e5b45c; --warn-bg:#33280f; --bad:#f08a82; --bad-bg:#3a1a18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161d; --surface:#18202a; --fg:#e5e9ee; --muted:#9aa5b3; --line:#2a3542;
+  --accent:#8fb3dc; --accent-soft:#1f2c3b;
+  --ok:#6cc596; --ok-bg:#16301f; --warn:#e5b45c; --warn-bg:#33280f; --bad:#f08a82; --bad-bg:#3a1a18; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.45}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:34px}
+h1,h2{font-family:var(--font-display);text-wrap:balance;margin:0}
+h1{font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.01em}
+h2{font-size:1.15rem;display:flex;align-items:baseline;gap:10px}
+h2 .n{font-size:.8rem;color:var(--accent);letter-spacing:.06em}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+.sub{color:var(--muted);margin:6px 0 0;max-width:70ch}
+section{display:flex;flex-direction:column;gap:12px}
+.note{color:var(--muted);font-size:.88rem;margin:0;max-width:80ch}
+
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.v{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.v b{font-family:var(--font-display);font-size:1rem}
+.v p{margin:0;font-size:.88rem;color:var(--muted)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.9rem}
+thead th{background:var(--accent-soft);font-family:var(--font-display);font-weight:700;font-size:.85rem;white-space:nowrap}
+tbody th{font-weight:600;width:20%}
+tr:last-child td,tr:last-child th{border-bottom:0}
+td.num{text-align:right;white-space:nowrap}
+tr.key td,tr.key th{background:var(--accent-soft)}
+.small{display:block;color:var(--muted);font-size:.78rem}
+
+.c{display:inline-block;padding:1px 7px;border-radius:999px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)} .warn{color:var(--warn);background:var(--warn-bg)} .bad{color:var(--bad);background:var(--bad-bg)}
+
+.flags{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.f{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.f h3{margin:0 0 6px;font-family:var(--font-display);font-size:.95rem}
+.f ul{margin:0;padding-left:18px;font-size:.88rem;display:flex;flex-direction:column;gap:3px}
+ol.next{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;max-width:85ch}
+a{color:var(--accent)}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Gera Song of Joy CHS · Kharadi, Pune · prepared 12 Oct 2026</div>
+  <h1>Security agency bids: 5-way comparison</h1>
+  <p class="sub">Harrier, Beta Force, K Samraat, Agility (AMS) and Seven Seas, checked against Maharashtra minimum wages for Jul–Dec 2026. All figures in ₹ per month, before 18% GST unless marked.</p>
+</header>
+
+<section>
+  <h2><span class="n">VERDICT</span>Where each agency stands</h2>
+  <div class="verdict">
+    <div class="v"><span class="c ok">Shortlist</span><b>Harrier</b><p>Most complete compliance at a mid price once full-month cover is priced in. No licence or contract terms supplied yet.</p></div>
+    <div class="v"><span class="c ok">Shortlist</span><b>K Samraat</b><p>Valid licence, local references. Same cost as Harrier per covered post but leaves out leave wages and gratuity.</p></div>
+    <div class="v"><span class="c warn">Negotiate or drop</span><b>Seven Seas</b><p>Costliest per covered post, yet pays the lowest wage base. Supervisors priced below the skilled minimum.</p></div>
+    <div class="v"><span class="c warn">On hold</span><b>Beta Force</b><p>Cheapest compliant-looking rate, but no breakup, no licence, "semi-compliance" and one-sided terms.</p></div>
+    <div class="v"><span class="c bad">Eliminate</span><b>AMS</b><p>Licence expired 05 Apr 2026. Quote dated Dec 2023, "without compliance".</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">01</span>Minimum wage benchmark</h2>
+  <p class="note">Maharashtra Zone I (Pune Municipal Corporation limits), special allowance notified 5 Aug 2026, valid 1 Jul–31 Dec 2026.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Category</th><th>Basic</th><th>Special allowance (DA)</th><th>Monthly minimum</th><th>Per day</th><th>Usually applied to</th></tr></thead>
+    <tbody>
+      <tr><th>Unskilled</th><td class="num">10,021</td><td class="num">4,134</td><td class="num"><b>14,155</b></td><td class="num">544.42</td><td>Legal floor for any worker</td></tr>
+      <tr><th>Semi-skilled</th><td class="num">10,856</td><td class="num">4,134</td><td class="num"><b>14,990</b></td><td class="num">576.54</td><td>Security guard (industry practice)</td></tr>
+      <tr><th>Skilled</th><td class="num">11,632</td><td class="num">4,134</td><td class="num"><b>15,766</b></td><td class="num">606.38</td><td>Security supervisor</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">These rates are for an 8-hour day. Every quote prices a 12-hour shift on this 8-hour wage with no overtime. That is common in the trade but not what the law requires. Pune Security Guard Board rates apply only to board-registered guards; I could not verify the current board rate from an official source.</p>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Wage base vs minimum</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <tbody>
+      <tr><th>Guard basic + DA</th>
+        <td>14,990 <span class="c ok">= semi-skilled</span></td>
+        <td><span class="c warn">No breakup</span></td>
+        <td>15,041 <span class="c ok">+51 over semi-skilled</span></td>
+        <td><span class="c warn">No breakup</span></td>
+        <td>14,155 <span class="c warn">unskilled floor</span><span class="small">₹835 below semi-skilled</span></td></tr>
+      <tr><th>Supervisor basic + DA</th>
+        <td>15,766 <span class="c ok">= skilled</span></td>
+        <td><span class="c warn">No breakup</span></td>
+        <td>16,533 <span class="c ok">+767 over skilled</span></td>
+        <td><span class="c warn">No breakup</span></td>
+        <td>14,155 <span class="c bad">below skilled</span><span class="small">₹1,611 short; premium paid as "performance allowance"</span></td></tr>
+      <tr><th>Other roles quoted</th><td>—</td><td>—</td><td>Lady guard 8 hrs: 13,842 <span class="c bad">below unskilled</span></td><td>—</td><td>Bouncer 8 hrs: 34,762</td></tr>
+      <tr><th>Gross wage to guard</th><td class="num">19,589</td><td>—</td><td class="num">17,545</td><td>—</td><td class="num">18,528</td></tr>
+      <tr><th>Guard take-home</th><td class="num">19,287</td><td>—</td><td class="num">15,414</td><td>—</td><td class="num">17,521</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Higher take-home usually means lower guard turnover. Harrier pays guards about ₹3,900 a month more in hand than K Samraat.</p>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Price per person</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <tbody>
+      <tr><th>Guard, as quoted</th><td class="num">27,711</td><td class="num">25,500</td><td class="num">24,000</td><td class="num">21,000</td><td class="num">25,936</td></tr>
+      <tr><th>Supervisor, as quoted</th><td class="num">28,852</td><td class="num">28,500</td><td class="num">26,001</td><td class="num">25,000</td><td class="num">29,418</td></tr>
+      <tr><th>Days each person works</th><td>30/31</td><td>28/29</td><td>26 <span class="small">cover page says 30/31</span></td><td>Not stated</td><td>26</td></tr>
+      <tr class="key"><th>Guard, per post for full month<span class="small">rate × 30 ÷ days</span></th><td class="num"><b>27,711</b></td><td class="num"><b>26,842</b></td><td class="num"><b>27,692</b></td><td>—</td><td class="num"><b>29,926</b></td></tr>
+      <tr class="key"><th>Supervisor, per post for full month</th><td class="num"><b>28,852</b></td><td class="num"><b>30,000</b></td><td class="num"><b>30,001</b></td><td>—</td><td class="num"><b>33,944</b></td></tr>
+      <tr><th>Agency margin</th><td>10%</td><td>Not disclosed</td><td>10%</td><td>Not disclosed</td><td>10%</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">The full-month row is the fair comparison. A 26-day rate covers 26 days; the remaining 4 days need a reliever at the same rate.</p>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Monthly bill for Song of Joy</h2>
+  <p class="note">Basis: 11 guard posts + 2 supervisor posts, covered every day. Headcount taken from the Seven Seas sheet ("new deployment"); bouncer excluded because only Seven Seas quoted one. Confirm the headcount.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <tbody>
+      <tr><th>Before GST</th><td class="num">3,62,525</td><td class="num">3,55,263</td><td class="num">3,64,618</td><td>Excluded</td><td class="num">3,97,078</td></tr>
+      <tr class="key"><th>With 18% GST</th><td class="num"><b>4,27,780</b></td><td class="num"><b>4,19,211</b></td><td class="num"><b>4,30,249</b></td><td>—</td><td class="num"><b>4,68,552</b></td></tr>
+      <tr><th>Per year with GST</th><td class="num">51.3 lakh</td><td class="num">50.3 lakh</td><td class="num">51.6 lakh</td><td>—</td><td class="num">56.2 lakh</td></tr>
+      <tr><th>vs cheapest</th><td class="num">+8,569</td><td class="num">—</td><td class="num">+11,038</td><td>—</td><td class="num">+49,341</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Seven Seas appears to be the current agency. Its sheet shows today's bill at ₹4,43,019/month with GST (15 staff incl. bouncer) and proposes ₹4,77,702 with one reliever added, a rise of ₹34,683/month.</p>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Statutory items in the guard rate</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <tbody>
+      <tr><th>Employer PF 13%</th><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle"><span class="c warn">No breakup</span><span class="small">"Semi-compliance", undefined</span></td><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle"><span class="c bad">None</span><span class="small">"Without compliance"</span></td><td>1,950 <span class="c ok">Yes</span></td></tr>
+      <tr><th>Employer ESIC 3.25%</th><td>620 <span class="c ok">Yes</span></td><td>570 <span class="c ok">Yes</span></td><td>460 <span class="c warn">Low</span><span class="small">on basic+DA only; own label says gross</span></td></tr>
+      <tr><th>Bonus 8.33%</th><td>1,249 <span class="c ok">Yes</span></td><td>1,253 <span class="c ok">Yes</span></td><td>1,179 <span class="c ok">Yes</span></td></tr>
+      <tr><th>Leave wages</th><td>600 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td>943 <span class="c ok">Yes</span></td></tr>
+      <tr><th>National holidays</th><td><span class="c warn">Not stated</span></td><td><span class="c warn">Billed extra</span><span class="small">26 Jan, 1 May, 15 Aug</span></td><td>156 <span class="c ok">Included</span></td></tr>
+      <tr><th>Gratuity 4.81%</th><td>721 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td><span class="c bad">No</span><span class="small">line left blank</span></td></tr>
+      <tr><th>Labour Welfare Fund</th><td>13 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td>13 <span class="c ok">Yes</span></td></tr>
+      <tr><th>Uniform</th><td class="num">450</td><td class="num">500</td><td class="num">350</td></tr>
+      <tr><th>Items covered</th><td><b>7 of 8</b></td><td><b>4 of 8</b></td><td><b>7 of 8</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Beta Force bills 4 national holidays extra (incl. 2 Oct). If an agency skips PF or ESIC, the society as principal employer can be held liable.</p>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Paperwork and contract terms</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <tbody>
+      <tr><th>Security agency (PSARA) licence</th><td><span class="c warn">Not provided</span></td><td><span class="c warn">Not provided</span></td><td><span class="c ok">Valid to 09 Mar 2030</span><span class="small">issued to "K Samraat Security Services OPC Pvt Ltd"</span></td><td><span class="c bad">Expired 05 Apr 2026</span></td><td><span class="c warn">Not provided</span></td></tr>
+      <tr><th>Registrations shown</th><td>GST, CIN</td><td>None</td><td>GST, PAN, PF, ESIC, PTRC, Shop Act</td><td>GST, PAN, ESIC, PTRC, Shop Act</td><td>CIN, MSME</td></tr>
+      <tr><th>Entity</th><td>Pvt Ltd (2017)</td><td>Pvt Ltd (says 2006)</td><td>One-person company</td><td>Proprietorship</td><td>Pvt Ltd (2015)</td></tr>
+      <tr><th>Document defects</th><td>CIN reads "PTG", likely typo of PTC</td><td>None seen</td><td>GSTIN PAN (…9351P) ≠ listed PAN (…9315P)</td><td>Says "housekeeping"; no addressee</td><td>Header says 8 hrs, columns say 12 hrs; tab named "April 2026"</td></tr>
+      <tr><th>Addressed to</th><td><span class="c ok">Song of Joy</span></td><td>Gera Green Villas</td><td>Geras Greens Ville</td><td>Nobody</td><td>"Gera"</td></tr>
+      <tr><th>Quote date</th><td>01 Oct 2026</td><td>01 Oct 2026</td><td>29 Sep 2026</td><td><span class="c bad">17 Dec 2023</span></td><td>Effective 01 Aug 2026</td></tr>
+      <tr><th>Staff designation</th><td>Security guard</td><td>Security guard</td><td>Security guard</td><td>Security guard</td><td><span class="c warn">"Caretaker"</span></td></tr>
+      <tr><th>Price rise clause</th><td>DA revisions</td><td><span class="c bad">Auto-renews +10%/yr</span></td><td>DA revisions</td><td>Wage revisions</td><td><span class="c warn">DA revisions or 7%/yr on gross</span></td></tr>
+      <tr><th>Client references</th><td>None</td><td>None</td><td>~55 (some repeated), incl. Kharadi sites</td><td>~18</td><td>None in file</td></tr>
+      <tr><th>Start-up time</th><td>Not stated</td><td>15 days</td><td>1 week</td><td>Not stated</td><td>Already on site (likely)</td></tr>
+      <tr><th>Exit notice</th><td>Not stated</td><td>1 month</td><td>1 month</td><td>1 month</td><td>Not stated</td></tr>
+      <tr><th>Loss / theft handling</th><td>Not stated</td><td>Not stated</td><td>Joint inquiry</td><td>Joint investigation</td><td>Not stated</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="n">07</span>Red flags</h2>
+  <div class="flags">
+    <div class="f"><h3>Seven Seas</h3><ul>
+      <li>Guards and supervisors paid at the unskilled floor.</li>
+      <li>Supervisor basic below the skilled minimum.</li>
+      <li>Staff labelled "caretaker", which can sidestep security-guard wage rules.</li>
+      <li>No gratuity; ESIC calculated on a smaller base than stated.</li>
+      <li>Highest cost per covered post despite the lowest wages.</li>
+    </ul></div>
+    <div class="f"><h3>K Samraat</h3><ul>
+      <li>GST number and PAN don't match.</li>
+      <li>Letterhead name differs from licensed entity.</li>
+      <li>No leave wages or gratuity.</li>
+      <li>Lady guard rate below the legal floor.</li>
+    </ul></div>
+    <div class="f"><h3>Harrier</h3><ul>
+      <li>No licence or contract terms sent.</li>
+      <li>₹3,100/guard in non-statutory allowances; room to negotiate.</li>
+      <li>Ask if gratuity is billed only when actually paid.</li>
+    </ul></div>
+    <div class="f"><h3>Beta Force</h3><ul>
+      <li>No cost breakup or licence.</li>
+      <li>Silence for 15 days treated as an accepted order.</li>
+      <li>Auto-renewal with 10% rise.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">08</span>Before the committee decides</h2>
+  <ol class="next">
+    <li>Get the PSARA licence from Harrier, Beta Force and Seven Seas, and verify every licence on the state portal.</li>
+    <li>Ask Harrier to cut optional allowances or margin; ask K Samraat to add leave wages and gratuity and quote in the licensed entity's name. Then compare again.</li>
+    <li>Ask Seven Seas to re-price guards at semi-skilled and supervisors at skilled rates, and explain the "caretaker" label.</li>
+    <li>Get one all-inclusive price per post: 24×7 cover, relievers, national holidays.</li>
+    <li>Ask the shortlisted agencies for the last 3 months' PF and ESIC challans for deployed staff, and call two references each.</li>
+  </ol>
+  <p class="note">Wage source: <a href="https://www.sgcms.com/regulatory-updates/minimum-rate-of-wages-maharashtra-august-2026/">Maharashtra minimum wages, Aug 2026 notification (SGCMS summary)</a>. All other figures from the five agency documents.</p>
+</section>
+</div>
+
+</body></html>
