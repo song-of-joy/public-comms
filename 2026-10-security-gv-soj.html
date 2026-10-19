@@ -21,7 +21,7 @@
   --ok:#6cc596; --ok-bg:#16301f; --warn:#e5b45c; --warn-bg:#33280f; --bad:#f08a82; --bad-bg:#3a1a18; color-scheme:dark}
 
 body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.45}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:34px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:34px}
 h1,h2{font-family:var(--font-display);text-wrap:balance;margin:0}
 h1{font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.01em}
 h2{font-size:1.15rem;display:flex;align-items:baseline;gap:10px}
@@ -37,7 +37,7 @@ section{display:flex;flex-direction:column;gap:12px}
 .v p{margin:0;font-size:.88rem;color:var(--muted)}
 
 .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:760px;font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;min-width:1080px;font-variant-numeric:tabular-nums}
 th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.9rem}
 thead th{background:var(--accent-soft);font-family:var(--font-display);font-weight:700;font-size:.85rem;white-space:nowrap}
 tbody th{font-weight:600;width:20%}
@@ -64,9 +64,9 @@ a{color:var(--accent)}
 
 <div class="wrap">
 <header>
-  <div class="eyebrow">Gera Song of Joy CHS · Kharadi, Pune · prepared 12 Oct 2026</div>
-  <h1>Security agency bids: 5-way comparison</h1>
-  <p class="sub">Harrier, Beta Force, K Samraat, Agility (AMS) and Seven Seas, checked against Maharashtra minimum wages for Jul–Dec 2026. All figures in ₹ per month, before 18% GST unless marked.</p>
+  <div class="eyebrow">Gera Song of Joy CHS · Kharadi, Pune · updated 19 Oct 2026</div>
+  <h1>Security agency bids: 8 quotes from 7 agencies</h1>
+  <p class="sub">Harrier, Beta Force, K Samraat, Agility (AMS), Seven Seas, Securise (two quotes: compliant and non-compliant) and Diksha, checked against Maharashtra minimum wages for Jul–Dec 2026. All figures in ₹ per month, before 18% GST unless marked.</p>
 </header>
 
 <section>
@@ -76,6 +76,9 @@ a{color:var(--accent)}
     <div class="v"><span class="c ok">Shortlist</span><b>K Samraat</b><p>Valid licence, local references. Same cost as Harrier per covered post but leaves out leave wages and gratuity.</p></div>
     <div class="v"><span class="c warn">Negotiate or drop</span><b>Seven Seas</b><p>Costliest per covered post, yet pays the lowest wage base. Supervisors priced below the skilled minimum.</p></div>
     <div class="v"><span class="c warn">On hold</span><b>Beta Force</b><p>Cheapest compliant-looking rate, but no breakup, no licence, "semi-compliance" and one-sided terms.</p></div>
+    <div class="v"><span class="c warn">On hold</span><b>Diksha</b><p>Licence and registrations listed, but no cost breakup. Same base rates as Beta Force, plus 10% fee. Licence dates from Apr 2021 and needs a renewal check.</p></div>
+    <div class="v"><span class="c warn">On hold</span><b>Securise (compliant)</b><p>Best take-home pay for guards, but the costliest bid overall. No licence shown, no gratuity or holiday wages.</p></div>
+    <div class="v"><span class="c bad">Eliminate</span><b>Securise (non-compliant)</b><p>Cheapest bid, because it skips PF, ESIC and bonus. That liability would fall on the society.</p></div>
     <div class="v"><span class="c bad">Eliminate</span><b>AMS</b><p>Licence expired 05 Apr 2026. Quote dated Dec 2023, "without compliance".</p></div>
   </div>
 </section>
@@ -97,73 +100,79 @@ a{color:var(--accent)}
 <section>
   <h2><span class="n">02</span>Wage base vs minimum</h2>
   <div class="tbl"><table>
-    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th></tr></thead>
     <tbody>
       <tr><th>Guard basic + DA</th>
         <td>14,990 <span class="c ok">= semi-skilled</span></td>
         <td><span class="c warn">No breakup</span></td>
         <td>15,041 <span class="c ok">+51 over semi-skilled</span></td>
         <td><span class="c warn">No breakup</span></td>
-        <td>14,155 <span class="c warn">unskilled floor</span><span class="small">₹835 below semi-skilled</span></td></tr>
+        <td>14,155 <span class="c warn">unskilled floor</span><span class="small">₹835 below semi-skilled</span></td>
+        <td>15,170 <span class="c ok">+180 over semi-skilled</span><span class="small">uses Zone II skilled basic</span></td>
+        <td><span class="c bad">Non-compliant</span></td>
+        <td><span class="c warn">No breakup</span></td></tr>
       <tr><th>Supervisor basic + DA</th>
         <td>15,766 <span class="c ok">= skilled</span></td>
         <td><span class="c warn">No breakup</span></td>
         <td>16,533 <span class="c ok">+767 over skilled</span></td>
         <td><span class="c warn">No breakup</span></td>
-        <td>14,155 <span class="c bad">below skilled</span><span class="small">₹1,611 short; premium paid as "performance allowance"</span></td></tr>
-      <tr><th>Other roles quoted</th><td>—</td><td>—</td><td>Lady guard 8 hrs: 13,842 <span class="c bad">below unskilled</span></td><td>—</td><td>Bouncer 8 hrs: 34,762</td></tr>
-      <tr><th>Gross wage to guard</th><td class="num">19,589</td><td>—</td><td class="num">17,545</td><td>—</td><td class="num">18,528</td></tr>
-      <tr><th>Guard take-home</th><td class="num">19,287</td><td>—</td><td class="num">15,414</td><td>—</td><td class="num">17,521</td></tr>
+        <td>14,155 <span class="c bad">below skilled</span><span class="small">₹1,611 short; premium paid as "performance allowance"</span></td>
+        <td>15,766 <span class="c ok">= skilled</span></td>
+        <td><span class="c bad">Non-compliant</span></td>
+        <td><span class="c warn">No breakup</span></td></tr>
+      <tr><th>Other roles quoted</th><td>—</td><td>—</td><td>Lady guard 8 hrs: 13,842 <span class="c bad">below unskilled</span></td><td>—</td><td>Bouncer 8 hrs: 34,762</td><td>Lady guard 8 hrs: 21,036<span class="small">Bouncer 8 hrs: 28,444</span></td><td>Lady guard: 16,000<span class="small">Bouncer: 25,000</span></td><td>Lady guard 10 hrs: 25,500<span class="small">Bouncer 8 hrs: 30,500</span></td></tr>
+      <tr><th>Gross wage to guard</th><td class="num">19,589</td><td>—</td><td class="num">17,545</td><td>—</td><td class="num">18,528</td><td class="num">22,212</td><td>—</td><td>—</td></tr>
+      <tr><th>Guard take-home</th><td class="num">19,287</td><td>—</td><td class="num">15,414</td><td>—</td><td class="num">17,521</td><td class="num"><b>20,191</b></td><td>—</td><td>—</td></tr>
     </tbody>
   </table></div>
-  <p class="note">Higher take-home usually means lower guard turnover. Harrier pays guards about ₹3,900 a month more in hand than K Samraat.</p>
+  <p class="note">Higher take-home usually means lower guard turnover. Securise (compliant) pays the most in hand (₹20,191), then Harrier (₹19,287). K Samraat pays the least (₹15,414).</p>
 </section>
 
 <section>
   <h2><span class="n">03</span>Price per person</h2>
   <div class="tbl"><table>
-    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th></tr></thead>
     <tbody>
-      <tr><th>Guard, as quoted</th><td class="num">27,711</td><td class="num">25,500</td><td class="num">24,000</td><td class="num">21,000</td><td class="num">25,936</td></tr>
-      <tr><th>Supervisor, as quoted</th><td class="num">28,852</td><td class="num">28,500</td><td class="num">26,001</td><td class="num">25,000</td><td class="num">29,418</td></tr>
-      <tr><th>Days each person works</th><td>30/31</td><td>28/29</td><td>26 <span class="small">cover page says 30/31</span></td><td>Not stated</td><td>26</td></tr>
-      <tr class="key"><th>Guard, per post for full month<span class="small">rate × 30 ÷ days</span></th><td class="num"><b>27,711</b></td><td class="num"><b>26,842</b></td><td class="num"><b>27,692</b></td><td>—</td><td class="num"><b>29,926</b></td></tr>
-      <tr class="key"><th>Supervisor, per post for full month</th><td class="num"><b>28,852</b></td><td class="num"><b>30,000</b></td><td class="num"><b>30,001</b></td><td>—</td><td class="num"><b>33,944</b></td></tr>
-      <tr><th>Agency margin</th><td>10%</td><td>Not disclosed</td><td>10%</td><td>Not disclosed</td><td>10%</td></tr>
+      <tr><th>Guard, as quoted<span class="small">incl. agency fee</span></th><td class="num">27,711</td><td class="num">25,500</td><td class="num">24,000</td><td class="num">21,000</td><td class="num">25,936</td><td class="num">26,877<span class="small">24,434 + 10%</span></td><td class="num">22,550<span class="small">20,500 + 10%</span></td><td class="num">28,050<span class="small">25,500 + 10%</span></td></tr>
+      <tr><th>Supervisor, as quoted<span class="small">incl. agency fee</span></th><td class="num">28,852</td><td class="num">28,500</td><td class="num">26,001</td><td class="num">25,000</td><td class="num">29,418</td><td class="num">32,588<span class="small">29,626 + 10%</span></td><td class="num">28,600<span class="small">26,000 + 10%</span></td><td class="num">31,350<span class="small">28,500 + 10%</span></td></tr>
+      <tr><th>Days each person works</th><td>30/31</td><td>28/29</td><td>26 <span class="small">cover page says 30/31</span></td><td>Not stated</td><td>26</td><td>26</td><td>26</td><td>30</td></tr>
+      <tr class="key"><th>Guard, per post for full month<span class="small">rate × 30 ÷ days</span></th><td class="num"><b>27,711</b></td><td class="num"><b>26,842</b></td><td class="num"><b>27,692</b></td><td>—</td><td class="num"><b>29,926</b></td><td class="num"><b>31,012</b></td><td class="num"><b>26,019</b></td><td class="num"><b>28,050</b></td></tr>
+      <tr class="key"><th>Supervisor, per post for full month</th><td class="num"><b>28,852</b></td><td class="num"><b>30,000</b></td><td class="num"><b>30,001</b></td><td>—</td><td class="num"><b>33,944</b></td><td class="num"><b>37,602</b></td><td class="num"><b>33,000</b></td><td class="num"><b>31,350</b></td></tr>
+      <tr><th>Agency margin</th><td>10%</td><td>Not disclosed</td><td>10%</td><td>Not disclosed</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td></tr>
     </tbody>
   </table></div>
-  <p class="note">The full-month row is the fair comparison. A 26-day rate covers 26 days; the remaining 4 days need a reliever at the same rate.</p>
+  <p class="note">The full-month row is the fair comparison. A 26-day rate covers 26 days; the remaining 4 days need a reliever at the same rate. Diksha's base rates (25,500 / 28,500) are identical to Beta Force's; Diksha adds a 10% fee on top.</p>
 </section>
 
 <section>
   <h2><span class="n">04</span>Monthly bill for Song of Joy</h2>
-  <p class="note">Basis: 11 guard posts + 2 supervisor posts, covered every day. Headcount taken from the Seven Seas sheet ("new deployment"); bouncer excluded because only Seven Seas quoted one. Confirm the headcount.</p>
+  <p class="note">Basis: 11 guard posts + 2 supervisor posts, covered every day. Headcount taken from the Seven Seas sheet ("new deployment"); bouncer excluded because not every agency quoted one. Confirm the headcount.</p>
   <div class="tbl"><table>
-    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th></tr></thead>
     <tbody>
-      <tr><th>Before GST</th><td class="num">3,62,525</td><td class="num">3,55,263</td><td class="num">3,64,618</td><td>Excluded</td><td class="num">3,97,078</td></tr>
-      <tr class="key"><th>With 18% GST</th><td class="num"><b>4,27,780</b></td><td class="num"><b>4,19,211</b></td><td class="num"><b>4,30,249</b></td><td>—</td><td class="num"><b>4,68,552</b></td></tr>
-      <tr><th>Per year with GST</th><td class="num">51.3 lakh</td><td class="num">50.3 lakh</td><td class="num">51.6 lakh</td><td>—</td><td class="num">56.2 lakh</td></tr>
-      <tr><th>vs cheapest</th><td class="num">+8,569</td><td class="num">—</td><td class="num">+11,038</td><td>—</td><td class="num">+49,341</td></tr>
+      <tr><th>Before GST</th><td class="num">3,62,525</td><td class="num">3,55,263</td><td class="num">3,64,618</td><td>Excluded</td><td class="num">3,97,078</td><td class="num">4,16,339</td><td class="num">3,52,212</td><td class="num">3,71,250</td></tr>
+      <tr class="key"><th>With 18% GST</th><td class="num"><b>4,27,780</b></td><td class="num"><b>4,19,211</b></td><td class="num"><b>4,30,249</b></td><td>—</td><td class="num"><b>4,68,552</b></td><td class="num"><b>4,91,280</b></td><td class="num"><b>4,15,610</b></td><td class="num"><b>4,38,075</b></td></tr>
+      <tr><th>Per year with GST</th><td class="num">51.3 lakh</td><td class="num">50.3 lakh</td><td class="num">51.6 lakh</td><td>—</td><td class="num">56.2 lakh</td><td class="num">59.0 lakh</td><td class="num">49.9 lakh</td><td class="num">52.6 lakh</td></tr>
+      <tr><th>vs cheapest</th><td class="num">+12,170</td><td class="num">+3,601</td><td class="num">+14,639</td><td>—</td><td class="num">+52,942</td><td class="num">+75,670</td><td class="num">— <span class="c bad">non-compliant</span></td><td class="num">+22,465</td></tr>
     </tbody>
   </table></div>
-  <p class="note">Seven Seas appears to be the current agency. Its sheet shows today's bill at ₹4,43,019/month with GST (15 staff incl. bouncer) and proposes ₹4,77,702 with one reliever added, a rise of ₹34,683/month.</p>
+  <p class="note">Seven Seas appears to be the current agency. Its sheet shows today's bill at ₹4,43,019/month with GST (15 staff incl. bouncer) and proposes ₹4,77,702 with one reliever added, a rise of ₹34,683/month. Securise's own totals for 14 staff (10 guards, 1 lady guard, 2 supervisors, 1 bouncer) are ₹4,58,286 with GST (compliant) and ₹3,86,804 with GST (non-compliant). Both exclude relievers for weekly offs, which are billed extra.</p>
 </section>
 
 <section>
   <h2><span class="n">05</span>Statutory items in the guard rate</h2>
   <div class="tbl"><table>
-    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th></tr></thead>
     <tbody>
-      <tr><th>Employer PF 13%</th><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c warn">No breakup</span><span class="small">"Semi-compliance", undefined</span></td><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c bad">None</span><span class="small">"Without compliance"</span></td><td>1,950 <span class="c ok">Yes</span></td></tr>
-      <tr><th>Employer ESIC 3.25%</th><td>620 <span class="c ok">Yes</span></td><td>570 <span class="c ok">Yes</span></td><td>460 <span class="c warn">Low</span><span class="small">on basic+DA only; own label says gross</span></td></tr>
-      <tr><th>Bonus 8.33%</th><td>1,249 <span class="c ok">Yes</span></td><td>1,253 <span class="c ok">Yes</span></td><td>1,179 <span class="c ok">Yes</span></td></tr>
-      <tr><th>Leave wages</th><td>600 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td>943 <span class="c ok">Yes</span></td></tr>
-      <tr><th>National holidays</th><td><span class="c warn">Not stated</span></td><td><span class="c warn">Billed extra</span><span class="small">26 Jan, 1 May, 15 Aug</span></td><td>156 <span class="c ok">Included</span></td></tr>
-      <tr><th>Gratuity 4.81%</th><td>721 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td><span class="c bad">No</span><span class="small">line left blank</span></td></tr>
-      <tr><th>Labour Welfare Fund</th><td>13 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td>13 <span class="c ok">Yes</span></td></tr>
-      <tr><th>Uniform</th><td class="num">450</td><td class="num">500</td><td class="num">350</td></tr>
-      <tr><th>Items covered</th><td><b>7 of 8</b></td><td><b>4 of 8</b></td><td><b>7 of 8</b></td></tr>
+      <tr><th>Employer PF 13%</th><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c warn">No breakup</span><span class="small">"Semi-compliance", undefined</span></td><td>1,950 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c bad">None</span><span class="small">"Without compliance"</span></td><td>1,950 <span class="c ok">Yes</span></td><td>1,972 <span class="c ok">Yes</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c bad">None</span><span class="small">"Non-compliance" quote</span></td><td rowspan="9" style="vertical-align:middle;text-align:center"><span class="c warn">No breakup</span><span class="small">Claims full compliance; holidays billed extra</span></td></tr>
+      <tr><th>Employer ESIC 3.25%</th><td>620 <span class="c ok">Yes</span></td><td>570 <span class="c ok">Yes</span></td><td>460 <span class="c warn">Low</span><span class="small">on basic+DA only; own label says gross</span></td><td>0 <span class="c warn">Not covered</span><span class="small">gross above ₹21,000 ESIC ceiling; needs injury insurance instead</span></td></tr>
+      <tr><th>Bonus 8.33%</th><td>1,249 <span class="c ok">Yes</span></td><td>1,253 <span class="c ok">Yes</span></td><td>1,179 <span class="c ok">Yes</span></td><td>1,264 <span class="c ok">Yes</span></td></tr>
+      <tr><th>Leave wages</th><td>600 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td>943 <span class="c ok">Yes</span></td><td>730 <span class="c ok">Yes</span></td></tr>
+      <tr><th>National holidays</th><td><span class="c warn">Not stated</span></td><td><span class="c warn">Billed extra</span><span class="small">26 Jan, 1 May, 15 Aug</span></td><td>156 <span class="c ok">Included</span></td><td>0 <span class="c bad">No</span></td></tr>
+      <tr><th>Gratuity 4.81%</th><td>721 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td><span class="c bad">No</span><span class="small">line left blank</span></td><td><span class="c bad">No</span></td></tr>
+      <tr><th>Labour Welfare Fund</th><td>13 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td><td>13 <span class="c ok">Yes</span></td><td><span class="c bad">No</span></td></tr>
+      <tr><th>Uniform</th><td class="num">450</td><td class="num">500</td><td class="num">350</td><td class="num">250</td></tr>
+      <tr><th>Items covered</th><td><b>7 of 8</b></td><td><b>4 of 8</b></td><td><b>7 of 8</b></td><td><b>4 of 8</b><span class="small">ESIC not applicable</span></td></tr>
     </tbody>
   </table></div>
   <p class="note">Beta Force bills 4 national holidays extra (incl. 2 Oct). If an agency skips PF or ESIC, the society as principal employer can be held liable.</p>
@@ -172,20 +181,21 @@ a{color:var(--accent)}
 <section class="text-table">
   <h2><span class="n">06</span>Paperwork and contract terms</h2>
   <div class="tbl"><table>
-    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th></tr></thead>
+    <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th></tr></thead>
     <tbody>
-      <tr><th>Security agency (PSARA) licence</th><td><span class="c warn">Not provided</span></td><td><span class="c warn">Not provided</span></td><td><span class="c ok">Valid to 09 Mar 2030</span><span class="small">issued to "K Samraat Security Services OPC Pvt Ltd"</span></td><td><span class="c bad">Expired 05 Apr 2026</span></td><td><span class="c warn">Not provided</span></td></tr>
-      <tr><th>Registrations shown</th><td>GST, CIN</td><td>None</td><td>GST, PAN, PF, ESIC, PTRC, Shop Act</td><td>GST, PAN, ESIC, PTRC, Shop Act</td><td>CIN, MSME</td></tr>
-      <tr><th>Entity</th><td>Pvt Ltd (2017)</td><td>Pvt Ltd (says 2006)</td><td>One-person company</td><td>Proprietorship</td><td>Pvt Ltd (2015)</td></tr>
-      <tr><th>Document defects</th><td>CIN reads "PTG", likely typo of PTC</td><td>None seen</td><td>GSTIN PAN (…9351P) ≠ listed PAN (…9315P)</td><td>Says "housekeeping"; no addressee</td><td>Header says 8 hrs, columns say 12 hrs; tab named "April 2026"</td></tr>
-      <tr><th>Addressed to</th><td><span class="c ok">Song of Joy</span></td><td>Gera Green Villas</td><td>Geras Greens Ville</td><td>Nobody</td><td>"Gera"</td></tr>
-      <tr><th>Quote date</th><td>01 Oct 2026</td><td>01 Oct 2026</td><td>29 Sep 2026</td><td><span class="c bad">17 Dec 2023</span></td><td>Effective 01 Aug 2026</td></tr>
-      <tr><th>Staff designation</th><td>Security guard</td><td>Security guard</td><td>Security guard</td><td>Security guard</td><td><span class="c warn">"Caretaker"</span></td></tr>
-      <tr><th>Price rise clause</th><td>DA revisions</td><td><span class="c bad">Auto-renews +10%/yr</span></td><td>DA revisions</td><td>Wage revisions</td><td><span class="c warn">DA revisions or 7%/yr on gross</span></td></tr>
-      <tr><th>Client references</th><td>None</td><td>None</td><td>~55 (some repeated), incl. Kharadi sites</td><td>~18</td><td>None in file</td></tr>
-      <tr><th>Start-up time</th><td>Not stated</td><td>15 days</td><td>1 week</td><td>Not stated</td><td>Already on site (likely)</td></tr>
-      <tr><th>Exit notice</th><td>Not stated</td><td>1 month</td><td>1 month</td><td>1 month</td><td>Not stated</td></tr>
-      <tr><th>Loss / theft handling</th><td>Not stated</td><td>Not stated</td><td>Joint inquiry</td><td>Joint investigation</td><td>Not stated</td></tr>
+      <tr><th>Security agency (PSARA) licence</th><td><span class="c warn">Not provided</span></td><td><span class="c warn">Not provided</span></td><td><span class="c ok">Valid to 09 Mar 2030</span><span class="small">issued to "K Samraat Security Services OPC Pvt Ltd"</span></td><td><span class="c bad">Expired 05 Apr 2026</span></td><td><span class="c warn">Not provided</span></td><td colspan="2"><span class="c warn">Not provided</span></td><td><span class="c warn">Renewal unclear</span><span class="small">No. PSA/L/38/MH/2021/APR/…; licences run 5 years, so check it was renewed after Apr 2026</span></td></tr>
+      <tr><th>Registrations shown</th><td>GST, CIN</td><td>None</td><td>GST, PAN, PF, ESIC, PTRC, Shop Act</td><td>GST, PAN, ESIC, PTRC, Shop Act</td><td>CIN, MSME</td><td colspan="2">None</td><td>GST, PAN, PF, ESIC, PT, Shop Act, MLWF, Udyam, ISO 9001</td></tr>
+      <tr><th>Entity</th><td>Pvt Ltd (2017)</td><td>Pvt Ltd (says 2006)</td><td>One-person company</td><td>Proprietorship</td><td>Pvt Ltd (2015)</td><td colspan="2">Not stated</td><td>Proprietorship (since 2014)</td></tr>
+      <tr><th>Document defects</th><td>CIN reads "PTG", likely typo of PTC</td><td>None seen</td><td>GSTIN PAN (…9351P) ≠ listed PAN (…9315P)</td><td>Says "housekeeping"; no addressee</td><td>Header says 8 hrs, columns say 12 hrs; tab named "April 2026"</td><td colspan="2">Files titled "MS Sky Villas"; compliant quote's management-fee and GST lines are unlabelled figures</td><td>Lists a service tax number (abolished 2017); "certificates" include public pledges; some clients repeated</td></tr>
+      <tr><th>Addressed to</th><td><span class="c ok">Song of Joy</span></td><td>Gera Green Villas</td><td>Geras Greens Ville</td><td>Nobody</td><td>"Gera"</td><td colspan="2">Gera's GreensVille</td><td>Gera Greenville Society</td></tr>
+      <tr><th>Quote date</th><td>01 Oct 2026</td><td>01 Oct 2026</td><td>29 Sep 2026</td><td><span class="c bad">17 Dec 2023</span></td><td>Effective 01 Aug 2026</td><td colspan="2">01 Oct 2026</td><td>03 Oct 2026</td></tr>
+      <tr><th>Staff designation</th><td>Security guard</td><td>Security guard</td><td>Security guard</td><td>Security guard</td><td><span class="c warn">"Caretaker"</span></td><td colspan="2">Security guard</td><td>Security guard</td></tr>
+      <tr><th>Price rise clause</th><td>DA revisions</td><td><span class="c bad">Auto-renews +10%/yr</span></td><td>DA revisions</td><td>Wage revisions</td><td><span class="c warn">DA revisions or 7%/yr on gross</span></td><td colspan="2">Not stated</td><td>Not stated</td></tr>
+      <tr><th>Client references</th><td>None</td><td>None</td><td>~55 (some repeated), incl. Kharadi sites</td><td>~18</td><td>None in file</td><td colspan="2">None</td><td>~109 (some repeated), incl. Kharadi IT park and Mundhwa / Keshav Nagar societies</td></tr>
+      <tr><th>Start-up time</th><td>Not stated</td><td>15 days</td><td>1 week</td><td>Not stated</td><td>Already on site (likely)</td><td colspan="2">Not stated</td><td>Not stated</td></tr>
+      <tr><th>Exit notice</th><td>Not stated</td><td>1 month</td><td>1 month</td><td>1 month</td><td>Not stated</td><td colspan="2">Not stated</td><td>Not stated</td></tr>
+      <tr><th>Payment terms</th><td>Not stated</td><td>Not stated</td><td>Not stated</td><td>Not stated</td><td>Not stated</td><td colspan="2">Bill on 1st, pay by 10th</td><td>Not stated</td></tr>
+      <tr><th>Loss / theft handling</th><td>Not stated</td><td>Not stated</td><td>Joint inquiry</td><td>Joint investigation</td><td>Not stated</td><td colspan="2">Not stated</td><td>General promise to prevent theft</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -216,19 +226,33 @@ a{color:var(--accent)}
       <li>Silence for 15 days treated as an accepted order.</li>
       <li>Auto-renewal with 10% rise.</li>
     </ul></div>
+    <div class="f"><h3>Securise</h3><ul>
+      <li>Compliant quote is the costliest: ₹4.91 lakh/month for full cover.</li>
+      <li>Guards fall outside ESIC, so ask for an employee injury policy.</li>
+      <li>No gratuity, holiday wages or LWF.</li>
+      <li>Non-compliant quote leaves PF/ESIC liability with the society.</li>
+      <li>No licence or registrations; quote written for another society.</li>
+    </ul></div>
+    <div class="f"><h3>Diksha</h3><ul>
+      <li>No cost breakup, so compliance can't be checked.</li>
+      <li>Licence issued Apr 2021; renewal not shown.</li>
+      <li>Base rates match Beta Force's exactly.</li>
+      <li>Government holidays billed extra.</li>
+    </ul></div>
   </div>
 </section>
 
 <section>
   <h2><span class="n">08</span>Before the committee decides</h2>
   <ol class="next">
-    <li>Get the PSARA licence from Harrier, Beta Force and Seven Seas, and verify every licence on the state portal.</li>
+    <li>Get the PSARA licence from Harrier, Beta Force, Seven Seas and Securise, and proof of Diksha's renewal. Verify every licence on the state portal.</li>
+    <li>Ask Diksha and Beta Force for a full cost breakup per guard.</li>
     <li>Ask Harrier to cut optional allowances or margin; ask K Samraat to add leave wages and gratuity and quote in the licensed entity's name. Then compare again.</li>
     <li>Ask Seven Seas to re-price guards at semi-skilled and supervisors at skilled rates, and explain the "caretaker" label.</li>
     <li>Get one all-inclusive price per post: 24×7 cover, relievers, national holidays.</li>
     <li>Ask the shortlisted agencies for the last 3 months' PF and ESIC challans for deployed staff, and call two references each.</li>
   </ol>
-  <p class="note">Wage source: <a href="https://www.sgcms.com/regulatory-updates/minimum-rate-of-wages-maharashtra-august-2026/">Maharashtra minimum wages, Aug 2026 notification (SGCMS summary)</a>. All other figures from the five agency documents.</p>
+  <p class="note">Wage source: <a href="https://www.sgcms.com/regulatory-updates/minimum-rate-of-wages-maharashtra-august-2026/">Maharashtra minimum wages, Aug 2026 notification (SGCMS summary)</a>. All other figures from the eight agency documents.</p>
 </section>
 </div>
 
