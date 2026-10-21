@@ -1,0 +1,531 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Song of Joy Security SOP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: full-width reading page, sticky jump bar of section chips, content grouped into cards and tables per section (same system as the bids page) */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#17202b; --muted:#5b6675; --line:#dde2e8;
+  --accent:#2b4f7a; --accent-soft:#e6edf5;
+  --ok:#1d7a4c; --ok-bg:#e3f3ea; --warn:#9a6200; --warn-bg:#fbf0d9; --bad:#b3261e; --bad-bg:#fbe5e3;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11161d; --surface:#18202a; --fg:#e5e9ee; --muted:#9aa5b3; --line:#2a3542;
+  --accent:#8fb3dc; --accent-soft:#1f2c3b;
+  --ok:#6cc596; --ok-bg:#16301f; --warn:#e5b45c; --warn-bg:#33280f; --bad:#f08a82; --bad-bg:#3a1a18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161d; --surface:#18202a; --fg:#e5e9ee; --muted:#9aa5b3; --line:#2a3542;
+  --accent:#8fb3dc; --accent-soft:#1f2c3b;
+  --ok:#6cc596; --ok-bg:#16301f; --warn:#e5b45c; --warn-bg:#33280f; --bad:#f08a82; --bad-bg:#3a1a18; color-scheme:dark}
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:900px){.pad{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+
+header.top{padding-block:28px 18px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+h1{font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.01em}
+h2{font-size:1.15rem;display:flex;align-items:baseline;gap:10px}
+h2 .n{font-size:.8rem;color:var(--accent);letter-spacing:.06em}
+h3{font-size:.95rem}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+.sub{color:var(--muted);margin:6px 0 0;max-width:80ch}
+
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-block:1px solid var(--line)}
+nav.jump ul{list-style:none;margin:0;padding-block:10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}
+@media (min-width:900px){nav.jump ul{flex-wrap:wrap;overflow:visible}}
+nav.jump a{display:block;white-space:nowrap;text-decoration:none;color:var(--fg);font-size:.85rem;font-weight:600;padding:4px 11px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+nav.jump a.flag{color:var(--warn);background:var(--warn-bg);border-color:transparent}
+
+main{padding-block:26px 56px;display:flex;flex-direction:column;gap:38px}
+section{display:flex;flex-direction:column;gap:12px;min-width:0}
+.note{color:var(--muted);font-size:.88rem;margin:0;max-width:90ch}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.f{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.f ul,.f ol{margin:0;padding-left:18px;font-size:.9rem;display:flex;flex-direction:column;gap:4px}
+.f p{margin:0;font-size:.9rem}
+.f .meta{color:var(--muted);font-size:.8rem}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.9rem}
+thead th{background:var(--accent-soft);font-family:var(--font-display);font-weight:700;font-size:.85rem;white-space:nowrap}
+tbody th{font-weight:600;min-width:120px}
+tr:last-child td,tr:last-child th{border-bottom:0}
+td.num{text-align:right;white-space:nowrap}
+tr.key td,tr.key th{background:var(--accent-soft)}
+.tbl tbody th,.tbl thead th:first-child{position:sticky;left:0;z-index:1;background:var(--surface);box-shadow:1px 0 0 var(--line)}
+.tbl thead th:first-child,.tbl tr.key th{background:var(--accent-soft)}
+.small{display:block;color:var(--muted);font-size:.78rem}
+
+.c{display:inline-block;padding:1px 7px;border-radius:999px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)} .warn{color:var(--warn);background:var(--warn-bg)} .bad{color:var(--bad);background:var(--bad-bg)} .info{color:var(--accent);background:var(--accent-soft)}
+
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tl li{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.tl li:last-child{border-bottom:0}
+.tl time{font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);white-space:nowrap}
+
+.callout{border:1px solid var(--line);border-left-width:4px;border-radius:6px;padding:10px 14px;background:var(--surface);font-size:.9rem;max-width:100ch}
+.callout.bad{border-left-color:var(--bad)} .callout.warn{border-left-color:var(--warn)}
+.callout.bad, .callout.warn{color:var(--fg)}
+.resolve{display:inline-block;margin-left:4px}
+
+ol.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:.92rem;max-width:90ch}
+a{color:var(--accent)}
+@media (max-width:700px){
+  body{font-size:14px}
+  th,td{padding:6px 8px;font-size:.82rem}
+  table{min-width:540px}
+  .tl li{grid-template-columns:72px 1fr}
+}
+</style>
+
+<header class="top pad">
+  <div class="eyebrow">Gera Song of Joy CHS · Kharadi, Pune · Version 2 · Oct 2026</div>
+  <h1>Security standard operating procedure</h1>
+  <p class="sub">Duties, entry rules and routines for guards and supervisors across buildings A1, A2, A3 and B1 and parking levels P1, P2 and P3. Version 1 issued Jun 2024; version 2 revised Oct 2026.</p>
+</header>
+
+<nav class="jump pad" aria-label="Sections">
+  <ul>
+    <li><a href="#changes">What changed</a></li>
+    <li><a href="#deploy">Deployment</a></li>
+    <li><a href="#entry">Entry points</a></li>
+    <li><a href="#conduct">Conduct</a></li>
+    <li><a href="#posts">Duties by post</a></li>
+    <li><a href="#supervisor">Supervisor shifts</a></li>
+    <li><a href="#visitors">Visitors &amp; deliveries</a></li>
+    <li><a href="#help">Domestic help &amp; labour</a></li>
+    <li><a href="#vehicles">Vehicles</a></li>
+    <li><a href="#shifting">Shifting &amp; gate pass</a></li>
+    <li><a href="#quiet">Silence hours</a></li>
+    <li><a href="#lights">Lights</a></li>
+    <li><a href="#plant">Lifts &amp; water</a></li>
+    <li><a href="#vendors">Vendors &amp; assets</a></li>
+    <li><a href="#emergency">Emergencies</a></li>
+    <li><a href="#reporting">Reporting</a></li>
+    <li><a href="#penalties">Penalties</a></li>
+    <li><a href="#resolve" class="flag">To resolve</a></li>
+  </ul>
+</nav>
+
+<main class="pad">
+
+<section id="changes">
+  <h2><span class="n">V2</span>What changed from version 1</h2>
+  <div class="grid">
+    <div class="f"><h3>Clarified</h3><ul>
+      <li>Cabs may use P2 after 11 pm only when carrying residents. Guests still enter from P1.</li>
+      <li>Shifting goes through P2 for A1, A2 and A3, and through P3 for B1.</li>
+      <li>Supervisor rounds: every 2 hours at night; two rounds by day, at 11 am and 4 pm.</li>
+      <li>TT and SV are the neighbouring societies in the Greensville complex.</li>
+    </ul></div>
+    <div class="f"><h3>Changed</h3><ul>
+      <li>A guard is replaced immediately when a violation is flagged by an MC member or by any SOJ resident. Version 1 allowed 3 days for MC-flagged cases.</li>
+      <li>Day-shift photo times moved from 12 noon and 4 pm to 11 am and 4 pm.</li>
+    </ul></div>
+    <div class="f"><h3>Removed</h3><ul>
+      <li>Covid parcel protocol.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="deploy">
+  <h2><span class="n">01</span>Deployment and shifts</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Post</th><th>Covers</th><th>Day</th><th>Night</th><th>Per day</th></tr></thead>
+    <tbody>
+      <tr><th>P1 building guard</th><td>One per building: A1, A2, A3, B1</td><td class="num">4</td><td class="num">4</td><td class="num">8</td></tr>
+      <tr><th>P3 entrance guard</th><td>A3 entrance and B1 entrance</td><td class="num">2</td><td class="num">2</td><td class="num">4</td></tr>
+      <tr><th>Rear ramp guard</th><td>Ramp from A1 to B1, incl. P2 level</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
+      <tr><th>Supervisor</th><td>All of SOJ; moves between posts</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
+      <tr class="key"><th>Total</th><td></td><td class="num"><b>8</b></td><td class="num"><b>8</b></td><td class="num"><b>16</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid">
+    <div class="f"><h3>Shift timings</h3><ul>
+      <li><b>Day shift:</b> 8 am to 8 pm, assembly at 8 am.</li>
+      <li><b>Night shift:</b> 8 pm to 8 am, assembly at 8 pm.</li>
+      <li>Mark daily guard attendance in MyGate.</li>
+    </ul></div>
+    <div class="f"><h3>Other teams on site</h3><ul>
+      <li><b>FMS / MEP team:</b> 9 am to 6 pm, so FMS support is available all day.</li>
+      <li><b>Housekeeping:</b> 9 am to 5 pm. The supervisor logs their attendance in MyGate.</li>
+    </ul></div>
+    <div class="f"><h3>Staying at post</h3><ul>
+      <li>Guards stay at or near their post for the whole shift.</li>
+      <li>For a break, ask the rear ramp guard or the supervisor to cover the post.</li>
+      <li>The supervisor must stay free to move for inspections and rounds, and should not cover one post for long.</li>
+      <li>Rounds away from a post should not take more than 2 minutes. P1 guards close the lobby glass doors before taking a round. <span class="c warn resolve">To resolve: R3</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="entry">
+  <h2><span class="n">02</span>Who enters where</h2>
+  <p class="note">Quick reference for each parking level. Details are in the sections that follow.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Level</th><th>Visitors and guests</th><th>Residents</th><th>Deliveries, maids</th><th>Goods and shifting</th></tr></thead>
+    <tbody>
+      <tr><th>P1<span class="small">all buildings</span></th><td><span class="c ok">Yes</span> Only entry point for visitors. MyGate entry and resident approval required.</td><td><span class="c ok">Yes</span></td><td><span class="c ok">Yes</span> Intercepted and logged here.</td><td><span class="c bad">No</span></td></tr>
+      <tr><th>P2<span class="small">rear ramp</span></th><td><span class="c bad">No</span></td><td><span class="c ok">Yes</span> With access cards. After 11 pm, cabs carrying residents enter here.</td><td><span class="c bad">No</span></td><td><span class="c ok">Yes</span> A1, A2, A3. Supervisor approves.</td></tr>
+      <tr><th>P3<span class="small">A3 and B1 entrances</span></th><td><span class="c warn">Vehicles</span> Logged against the flat with approval, then sent to rear ramp visitor parking. <span class="c warn resolve">To resolve: R1</span></td><td><span class="c ok">Yes</span> Entry and exit of resident vehicles logged.</td><td><span class="c warn">Check only</span> Confirm the address; no MyGate entry here.</td><td><span class="c ok">Yes</span> B1 only.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="conduct">
+  <h2><span class="n">03</span>Conduct and standards</h2>
+  <div class="grid">
+    <div class="f"><h3>On duty, every guard</h3><ul>
+      <li>Clean uniform and shoes.</li>
+      <li>Whistle and staff (lathi) at hand.</li>
+      <li>MyGate phone charged and at hand; know how to use it.</li>
+      <li>Emergency numbers at hand: hospital, ambulance, police, fire.</li>
+      <li>First aid box stocked at all times at P1.</li>
+      <li>Trained on this SOP for the SOJ site.</li>
+    </ul></div>
+    <div class="f"><h3>Dealing with residents</h3><ul>
+      <li>Speak politely and greet residents and visitors courteously.</li>
+      <li>Ask residents to follow society rules.</li>
+      <li>Avoid arguments. If a resident is rude, inform the secretary or chairman at once and note the vehicle and flat numbers.</li>
+      <li>Do not take personal work requests from residents.</li>
+      <li>Help elderly residents when needed.</li>
+      <li>Be respectful to women; keep decorum when questioning maids or housekeeping staff.</li>
+    </ul></div>
+    <div class="f"><h3>Never</h3><ul>
+      <li>Record videos of residents or children to capture an incident. CCTV coverage is enough.</li>
+      <li>Drink alcohol, sleep, or use a personal phone or headphones on duty (see <a href="#penalties">Penalties</a>).</li>
+      <li>Collect cash for any society charge.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="posts">
+  <h2><span class="n">04</span>Duties by post</h2>
+  <div class="grid">
+    <div class="f"><h3>P1 building guard</h3><span class="meta">A1, A2, A3, B1 · one per building per shift</span><ul>
+      <li>Make MyGate entries for all visitors, maids and parcel deliveries.</li>
+      <li>Take a full round of your building 4 times per shift.</li>
+      <li>Keep vehicles out of no-parking areas.</li>
+      <li>Know the lift rescue procedure.</li>
+      <li>Watch for flush overflow or pipe bursts (see <a href="#plant">Water</a>).</li>
+      <li>Stay alert to unusual activity.</li>
+      <li>Make sure cars keep to the speed limit and never drive against the one-way direction.</li>
+    </ul></div>
+    <div class="f"><h3>Rear ramp and P2 guard</h3><span class="meta">Ramp from A1 to B1 · one per shift</span><ul>
+      <li>Allow goods shifting from P2 only after the supervisor confirms the gate pass is in order.</li>
+      <li>Allow only residents with access cards to enter from P2; no guests or visitors.</li>
+      <li>Every hour, walk from A1 P1 to B1 P1, including the DG area, inside B1 P2 and A3 P3.</li>
+      <li>Watch for vehicles in no-parking spots on the ramp.</li>
+      <li>Only stickered vehicles park in designated areas; send badly parked vehicles out to the ramp.</li>
+      <li>Make sure cars keep to the speed limit and never drive against the one-way direction.</li>
+    </ul></div>
+    <div class="f"><h3>P3 entrance guard</h3><span class="meta">A3 and B1 entrances · one each per shift</span><ul>
+      <li>Log entry and exit of every resident vehicle.</li>
+      <li>Check each vehicle has a sticker and is registered on MyGate.</li>
+      <li>Log guest vehicles, and vehicles without stickers, against the flat and get approval.</li>
+      <li>Send guest vehicles to visitor parking on the rear ramp via the A3 P3 route.</li>
+      <li>Deliveries and maids are logged at P1. At P3, confirm they have the right address; no MyGate entry needed.</li>
+      <li>Make sure cars keep to the speed limit and never drive against the one-way direction.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="supervisor">
+  <h2><span class="n">05</span>Supervisor shifts</h2>
+  <div class="grid">
+    <div class="f"><h3>Day shift · 8 am to 8 pm</h3>
+      <ol class="tl">
+        <li><time>8:00 am</time><span>Assembly.</span></li>
+        <li><time>9:00 am</time><span>Housekeeping and FMS teams start; log housekeeping attendance in MyGate.</span></li>
+        <li><time>11:00 am</time><span>Round 1. Post photos of each guard at their post on the security WhatsApp group.</span></li>
+        <li><time>4:00 pm</time><span>Round 2 with guard photos. Review the housekeeping checklist and make sure the day's items are done.</span></li>
+      </ol>
+      <ul>
+        <li>Monitor tenants moving in and out closely.</li>
+        <li>Learn how to contain a pipe leak or flush overflow, and train P1 guards on it.</li>
+      </ul>
+    </div>
+    <div class="f"><h3>Night shift · 8 pm to 8 am</h3><span class="meta">Rounds every 2 hours. <span class="c warn">To resolve: R4</span></span>
+      <ol class="tl">
+        <li><time>8:00 pm</time><span>Assembly.</span></li>
+        <li><time>9:30 pm</time><span>Check the WTP treated tank level (until 10 pm). Turn off the domestic pump if the underground tank is full; turn off the WTP at 4 ft treated tank level. Both should cut off automatically; inform the MC at once if they don't.</span></li>
+        <li><time>10:30 pm</time><span>Check lights in all buildings, parking areas and lobbies, plus the transformer room, DG room and WTP area. Apply the <a href="#lights">light timings</a>.</span></li>
+        <li><time>11:00 pm</time><span>Guard photos at each post.</span></li>
+        <li><time>2:00 am</time><span>Guard photos at each post.</span></li>
+        <li><time>3:00 am</time><span>Check all building terraces. Report overhead tank levels for every building.</span></li>
+        <li><time>5:00 am</time><span>Guard photos at each post.</span></li>
+        <li><time>5:30 am</time><span>Report the WTP treated tank level and whether PMC water supply has started.</span></li>
+        <li><time>7:00 am</time><span>Start the WTP and domestic pump. Report PMC water status, treated tank level and all water meter readings.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="visitors">
+  <h2><span class="n">06</span>Visitors and deliveries</h2>
+  <div class="grid">
+    <div class="f"><h3>Visitor entry</h3><ol>
+      <li>Visitors enter from P1 only, never from P2 or P3.</li>
+      <li>Everyone (guests, couriers, postmen) is entered in MyGate with name, mobile and vehicle number.</li>
+      <li>Allow entry only after the resident approves on MyGate.</li>
+      <li>If no approval comes, call the flat on MyGate or intercom. Allow entry only if the owner agrees, and ask them to respond on MyGate in future.</li>
+    </ol></div>
+    <div class="f"><h3>Visitor parking</h3><ul>
+      <li>Visitor parking is on the rear ramp only. No visitor parking at the front or on P1, P2 or P3. <span class="c warn resolve">To resolve: R2</span></li>
+      <li>Ask visitors to park properly and tell them about the ₹500 fine for wrong parking.</li>
+      <li>Vehicles picking up or dropping off may halt 10 to 15 minutes.</li>
+    </ul></div>
+    <div class="f"><h3>Parcels and delivery staff</h3><ul>
+      <li>All delivery staff are entered in MyGate. Call the resident first; only then let them in or accept the parcel.</li>
+      <li>Do not accept a parcel without the resident's approval.</li>
+      <li>Delivery vans (Grofers, BigBasket, Flipkart, Amazon) may halt 10 to 15 minutes in front of the P1 lobby.</li>
+      <li>Two-wheelers park only in the marked area.</li>
+      <li>Pamphlets and door-to-door marketing are not allowed. Littering or spitting: ₹500 fine per incident.</li>
+    </ul></div>
+    <div class="f"><h3>Doorstep delivery</h3>
+      <p>No deliveries inside the buildings, lifts or to the doorstep, except:</p>
+      <ul><li>Milk, water, newspaper</li><li>Gas cylinder, laundry</li><li>Heavy parcels</li></ul>
+    </div>
+    <div class="f"><h3>Water tankers</h3>
+      <p>Tankers must never use the front ramp to reach P1. Enforce this strictly for the safety of residents, especially children.</p>
+    </div>
+  </div>
+</section>
+
+<section id="help">
+  <h2><span class="n">07</span>Domestic help and construction labour</h2>
+  <div class="grid">
+    <div class="f"><h3>Maids, cooks, domestic help</h3><ul>
+      <li>Must carry an ID card issued by Greensville main gate security. No card, no entry, even if the owner instructs otherwise.</li>
+      <li>Must be registered on MyGate against each flat they work in. Guards check this.</li>
+      <li>Check belongings when they leave; items taken out need the owner's written approval.</li>
+    </ul></div>
+    <div class="f"><h3>In-flat construction work</h3><ul>
+      <li>Owners email the MC before any work starts.</li>
+      <li>Allow workers only once the MC approves the email, and only on the dates in it. No entry after those dates.</li>
+      <li>Work hours: 8 am to 2 pm and 4 pm to 8 pm.</li>
+      <li>Workers staying overnight in a flat: security and the MC must be told in advance.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="vehicles">
+  <h2><span class="n">08</span>Vehicles and parking</h2>
+  <div class="grid">
+    <div class="f"><h3>Registration</h3><ul>
+      <li>MyGate registration is mandatory for every vehicle.</li>
+      <li>Parking stickers are mandatory for all owner vehicles.</li>
+      <li>Report any vehicle without a sticker or MyGate registration to the MC at once.</li>
+      <li>Stop such vehicles at entry or exit and politely ask the driver to collect a sticker and register.</li>
+    </ul></div>
+    <div class="f"><h3>Enforcement</h3><ul>
+      <li>Watch for unauthorised vehicles entering the premises.</li>
+      <li>Owner vehicles parked incorrectly are locked with a jammer and fined ₹500 each time.</li>
+      <li>Cars must keep to the speed limit and never drive against the one-way direction.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="shifting">
+  <h2><span class="n">09</span>Shifting, tenants and gate passes</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Building</th><th>Shift through</th><th>Shifting charge</th><th>Hours</th></tr></thead>
+    <tbody>
+      <tr><th>A1</th><td>P2</td><td class="num">₹1,500 + GST</td><td>8 am to 8 pm</td></tr>
+      <tr><th>A2</th><td>P2</td><td class="num">₹1,500 + GST</td><td>8 am to 8 pm</td></tr>
+      <tr><th>A3</th><td>P2</td><td class="num">₹2,000 + GST</td><td>8 am to 8 pm</td></tr>
+      <tr><th>B1</th><td>P3</td><td class="num">₹1,500 + GST</td><td>8 am to 8 pm</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">The charge applies to every tenant move in or out, and to any movement of heavy or bulky goods, furniture or construction material.</p>
+  <div class="grid">
+    <div class="f"><h3>Gate pass rules</h3><ul>
+      <li>Issue a gate pass before any goods, materials or furniture move. No gate pass, no movement.</li>
+      <li>Verify every item on the gate pass.</li>
+      <li>Use the service lift only, never a passenger lift.</li>
+      <li>Payment goes to the society account only; no cash. The MC issues a signed, stamped receipt to the owner.</li>
+      <li>Park trucks on the rear ramp so they don't block an entry or parking area.</li>
+    </ul></div>
+    <div class="f"><h3>Tenant moving in</h3><ul>
+      <li>The move must be emailed to the MC; allow it only after MC approval.</li>
+      <li>Keep copies of the rent agreement, ID proofs, contact details, vehicle details and police verification.</li>
+      <li>Tenant registers the flat and vehicles on MyGate, with the first page of the rent agreement attached.</li>
+    </ul></div>
+    <div class="f"><h3>Tenant moving out</h3><ul>
+      <li>MC approval by email, as for moving in.</li>
+      <li>Tenant unregisters themselves and their vehicles from MyGate.</li>
+      <li>Tenant fills in the exit gate pass and returns access cards to the owner.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="quiet">
+  <h2><span class="n">10</span>Silence hours · 11 pm to 6 am</h2>
+  <div class="grid">
+    <div class="f"><ul>
+      <li>Guards enforce silence hours; no loud music or noise.</li>
+      <li>Don't wait for a complaint. Call the resident and politely point out the disturbance.</li>
+      <li>Ask guests leaving late, and hosts of house parties, to keep noise down for the neighbours.</li>
+    </ul></div>
+    <div class="f"><h3>Cabs after 11 pm</h3><ul>
+      <li>Cabs carrying residents enter from P2, not P1, to avoid horns and reversing alarms at the lobby.</li>
+      <li>Cabs for guests still use P1.</li>
+      <li>Discourage horn use at all times during these hours.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="lights">
+  <h2><span class="n">11</span>Common area lights</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Area</th><th>A1 and A2</th><th>A3</th><th>B1</th></tr></thead>
+    <tbody>
+      <tr><th>P1 / P2 parking and lobby</th><td>On 6 pm, off 6 am</td><td>On 6 pm, off 6 am</td><td>On 6 pm, off 6 am <span class="small">includes P3</span></td></tr>
+      <tr><th>P3 parking</th><td>A2 P3: on 24×7 <span class="small">motion sensors, do not touch</span></td><td>On 24×7 <span class="small">motion sensors, do not touch</span></td><td>As above</td></tr>
+      <tr><th>Floor lobbies</th><td>On 24×7</td><td>On 24×7</td><td>One in three on 24×7</td></tr>
+      <tr><th>Staircases</th><td>On 6 pm, off 6 am</td><td>On 6 pm, off 6 am</td><td>Alternate lights, on 6 pm, off 6 am</td></tr>
+      <tr><th>Fire exit staircases</th><td>Off 24×7</td><td>Off 24×7</td><td>Alternate lights, on 6 pm, off 6 am</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">If it is still dark at 6 am because of the season, keep parking and lobby lights on.</p>
+</section>
+
+<section id="plant">
+  <h2><span class="n">12</span>Lifts, water and plumbing</h2>
+  <div class="grid">
+    <div class="f"><h3>Lifts</h3><ul>
+      <li>Know how to switch lifts on and off.</li>
+      <li>Do not allow overloading.</li>
+      <li>In an incident, get passengers to safety first. Practise the evacuation drill.</li>
+      <li>When power switches from MSEB to DG, lifts stop for about 1 minute. Check nobody is stuck and help with rescue.</li>
+      <li>Make sure housekeeping keeps lifts clean.</li>
+    </ul></div>
+    <div class="f"><h3>Water supply</h3><ul>
+      <li>Know how to control the water and solar water heater supply, and where motors and switches are.</li>
+      <li>Know and control the domestic and flush tank motor schedules.</li>
+      <li>Do not change water pressure; report to FMS.</li>
+      <li>Report pipe bursts, cracks and leaks to the FMS plumbing team as a priority.</li>
+    </ul></div>
+    <div class="f"><h3>Flush overflow in pipes</h3><ol>
+      <li>Ask the flat owner to shut the flush valve outside the bathroom window.</li>
+      <li>If the flat is not known, call FMS at once.</li>
+      <li>If no help arrives within 15 minutes, shut the flush line for that series.</li>
+      <li>Operate valves and pressure lines very slowly and carefully.</li>
+      <li>Email the MC about every incident.</li>
+    </ol></div>
+  </div>
+</section>
+
+<section id="vendors">
+  <h2><span class="n">13</span>Vendors, keys and society assets</h2>
+  <div class="grid">
+    <div class="f"><h3>Restricted areas</h3><span class="meta">Electric meter room, internet and telecom room, ducts, terraces</span><ul>
+      <li>Keep locked at all times. Access only for OCS staff, security and MC members.</li>
+      <li>Maintain a key register (in/out) and a master list.</li>
+      <li>Vendors work in common areas only from 9 am to 6 pm, and only with the FMS supervisor present.</li>
+      <li>Report any misuse of common areas or assets by vendors to the MC at once.</li>
+    </ul></div>
+    <div class="f"><h3>Society offices</h3><ul>
+      <li>Security has 6 chairs and 6 tables.</li>
+      <li><b>A1 office:</b> 4 chairs, 2 tables, 1 printer, 1 large and 1 small cupboard. The small cupboard is for security's belongings; security keeps its key. Access for security and MC only; keep it clean.</li>
+      <li><b>A2 office:</b> for changing and keeping belongings. No cooking or tea, no footwear inside.</li>
+      <li>Switch off lights and taps in common bathrooms and offices after use. Security keeps the bathroom keys.</li>
+    </ul></div>
+    <div class="f"><h3>Notice boards</h3><ul>
+      <li>Society notices need the society stamp, a signature and an end date. Remove expired ones and hand them to the MC.</li>
+      <li>Promotional notices need MC approval and an end date, but no society stamp. Remove and discard them when expired.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="emergency">
+  <h2><span class="n">14</span>Emergencies and incidents</h2>
+  <div class="callout bad"><b>Any mishap:</b> alert all guards on duty and in the area, including neighbouring societies TT and SV. Raise the alarm as loudly as possible. Stay alert at your post. Call the supervisor and the security company. Call the secretary and chairman by intercom or mobile.</div>
+  <div class="grid">
+    <div class="f"><h3>Medical emergency / ambulance</h3><ol>
+      <li>Residents share their flat number, intercom, name and mobile with security, and post on the SOJ WhatsApp group so an MC member can attend.</li>
+      <li>An arriving ambulance is the top priority. Tell the other guards.</li>
+      <li>Call the resident on intercom or mobile.</li>
+      <li>Call and hold the service lift for stretcher access.</li>
+      <li>Escort the medical team to the flat and help as needed.</li>
+      <li>Keep an emergency services directory up to date.</li>
+    </ol></div>
+    <div class="f"><h3>Fire safety</h3><ul>
+      <li>Mock fire drill every quarter; inspect fire equipment every month.</li>
+      <li>Keep fire equipment working, with vendors and the FMS team.</li>
+      <li>All guards and supervisors trained to use fire equipment.</li>
+      <li>Define the rescue and evacuation protocol, and when to use parking exhaust fans and terrace smoke blowers.</li>
+      <li>Refuge area access and fire brigade rescue trial once a year.</li>
+      <li>Email the MC about every incident.</li>
+    </ul></div>
+    <div class="f"><h3>Incident handling</h3><ul>
+      <li>Act within this SOP.</li>
+      <li>Report any departure from the SOP to the supervisor, who informs the MC.</li>
+      <li>Escalate resident complaints to the MC immediately.</li>
+      <li>Avoid arguments; involve the supervisor and MC if needed.</li>
+    </ul></div>
+    <div class="f"><h3>CCTV</h3><ul>
+      <li>The supervisor is in charge of all CCTV equipment.</li>
+      <li>Make sure cameras cover all areas; keep extra watch on blind spots.</li>
+      <li>Keep lenses clean for clear vision.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="reporting">
+  <h2><span class="n">15</span>Reporting and communication</h2>
+  <div class="grid">
+    <div class="f"><h3>Security WhatsApp group</h3><ul>
+      <li>Group of all stakeholders, so the supervisor can keep MC members updated.</li>
+      <li>Post even the smallest departure from routine.</li>
+      <li>Post timestamped, located photos of guards on every round.</li>
+    </ul></div>
+    <div class="f"><h3>Weekly report to the MC</h3><ul>
+      <li>Attendance</li><li>Incidents</li><li>Complaints</li><li>Other operational issues</li>
+    </ul><p class="meta">Send by email and keep all communication in email.</p></div>
+    <div class="f"><h3>Incidents</h3><ul>
+      <li>Report emergencies to the MC immediately.</li>
+      <li>Follow up every incident with an email to the MC so it is documented.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="penalties">
+  <h2><span class="n">16</span>Penalties</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Violation</th><th>Who</th><th>Penalty</th></tr></thead>
+    <tbody>
+      <tr><th>Alcohol on duty</th><td>Guard</td><td><span class="c bad">Removed immediately</span> Zero tolerance.</td></tr>
+      <tr><th>Sleeping on duty</th><td>Guard</td><td>₹250 per instance. <span class="c bad">Removed on 3rd instance</span></td></tr>
+      <tr><th>Personal phone, movies or headphones on duty</th><td>Guard</td><td>₹250 per instance. <span class="c bad">Removed on 3rd instance</span></td></tr>
+      <tr><th>Gross departure from this SOP</th><td>Shift supervisor</td><td>₹250</td></tr>
+      <tr><th>Violation flagged by an MC member or SOJ resident</th><td>Guard</td><td><span class="c bad">Replaced immediately</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="resolve">
+  <h2><span class="n">OPEN</span>To resolve before issue</h2>
+  <p class="note">Points where version 1 contradicts itself or is unclear. Each is marked where it appears on this page.</p>
+  <div class="grid">
+    <div class="f"><h3><span class="c warn">R1</span> Guest vehicles at P3</h3><p>Visitor entry is P1 only (section 06), yet P3 guards log guest vehicles and route them via A3 P3 to the rear ramp. Do guest vehicles drive in through P3 after the visitor is logged at P1, or should P3 turn them back to P1?</p></div>
+    <div class="f"><h3><span class="c warn">R2</span> Guest parking spots</h3><p>Version 1 tells guards to guide visitors to "free guest parking spots, or the ramp behind", but also says there is no visitor parking at the front or on any P level. Are there marked guest spots anywhere other than the rear ramp?</p></div>
+    <div class="f"><h3><span class="c warn">R3</span> 2-minute round limit</h3><p>Rounds are capped at 2 minutes, but P1 guards walk their whole building 4 times a shift and the ramp guard walks A1 to B1 incl. the DG area every hour. Should the limit apply only to P1 lobby checks?</p></div>
+    <div class="f"><h3><span class="c warn">R4</span> Night round times</h3><p>Night rounds are every 2 hours, but the photo times listed are 11 pm, 2 am and 5 am. Confirm the exact times, for example 10 pm, 12 am, 2 am, 4 am, 6 am.</p></div>
+  </div>
+</section>
+
+</main>
+
+</body></html>
