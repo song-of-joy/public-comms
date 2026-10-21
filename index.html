@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Song of Joy Documents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#17202b; --muted:#5b6675; --line:#dde2e8;
+  --accent:#2b4f7a; --accent-soft:#e6edf5;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#11161d; --surface:#18202a; --fg:#e5e9ee; --muted:#9aa5b3; --line:#2a3542;
+  --accent:#8fb3dc; --accent-soft:#1f2c3b; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.5}
+.wrap{padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+@media (min-width:900px){.wrap{padding-left:40px;padding-right:40px}}
+h1,h2{font-family:var(--font-display);text-wrap:balance;margin:0}
+h1{font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.01em}
+h2{font-size:1rem}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+.sub{color:var(--muted);margin:6px 0 0;max-width:80ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+a.card{display:flex;flex-direction:column;gap:6px;min-width:0;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--fg);text-decoration:none}
+a.card:hover,a.card:focus-visible{border-color:var(--accent);outline:none}
+a.card:hover h2,a.card:focus-visible h2{color:var(--accent)}
+.tag{align-self:flex-start;font-size:.75rem;font-weight:700;padding:1px 8px;border-radius:999px;color:var(--accent);background:var(--accent-soft)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.file{font-size:.78rem;color:var(--muted);font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-all}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Gera Song of Joy CHS · Kharadi, Pune</div>
+    <h1>Society documents</h1>
+    <p class="sub">Security and housekeeping procedures, and the October 2026 security agency comparison.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="2026-10-soj-security-sop.html">
+      <span class="tag">SOP · v2 Oct 2026</span>
+      <h2>Security SOP</h2>
+      <p>Guard deployment, duties by post, entry rules, supervisor routines and penalties for A1, A2, A3 and B1.</p>
+      <span class="file">2026-10-soj-security-sop.html</span>
+    </a>
+    <a class="card" href="2026-10-soj-housekeeping-sop.html">
+      <span class="tag">SOP · Oct 2026</span>
+      <h2>Housekeeping SOP</h2>
+      <p>Housekeeping procedures for the society.</p>
+      <span class="file">2026-10-soj-housekeeping-sop.html</span>
+    </a>
+    <a class="card" href="2026-10-security-gv-soj.html">
+      <span class="tag">Comparison · Oct 2026</span>
+      <h2>Security agency bids</h2>
+      <p>Quotes from 8 agencies checked against Maharashtra minimum wages, with monthly cost, compliance and verdicts.</p>
+      <span class="file">2026-10-security-gv-soj.html</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>
