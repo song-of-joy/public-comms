@@ -23,8 +23,9 @@ All pages share one visual system — keep new pages consistent with it:
 - Safe-area-aware padding (`env(safe-area-inset-*)`), full-width reading layout, wide tables scroll inside their own frame.
 - SOP pages use a sticky jump bar of section chips, with content grouped into cards and tables per section; the comment at the top of each page's `<style>` states its layout intent.
 - No `<script>` anywhere — keep pages pure HTML/CSS.
+- **No versioning.** Each page is always the current, final version. Don't add version numbers ("v2"), "what changed" sections, or "revised from…" notes. Edit the content in place instead. Git history is the record of changes.
 - **Mobile (≤640px, screen only):** the SOP pages turn every `.tbl` table row into a card, and each `<td>` shows its column name from a `data-label` attribute (pulled from that table's `<thead>`). Any new or edited table row must carry `data-label` on its `<td>`s, or the cell loses its heading on phones. The row's leading `<th>` becomes the card title; empty `<td>`s are hidden. Housekeeping has extra rules: in the weekly `table.wk`, only the "●" days show, as chips; each column of the checklist `table.ck` becomes its own card. These rules are the last `<style>` block in each page. Desktop and print keep the normal table layout.
 
 ## Checking changes
 
-There is no tooling. After editing, verify by re-reading the changed region, grepping for consistency across `index.html` and the document (filenames, version tags like "v2 Oct 2026", counts such as "8 agencies"), and opening the file in a browser if needed (ask before driving a headless browser).
+There is no tooling. After editing, verify by re-reading the changed region, grepping for consistency across `index.html` and the document (filenames, dates like "Oct 2026", counts such as "8 agencies"), and opening the file in a browser if needed (ask before driving a headless browser).
