@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lift Safety Notice for Users</title>
+<style>
+/* Layout: one printable A4 notice, plain black on white, two short lists (Do / Do not). On screen it shows as a centred sheet with a print hint. */
+@page{size:A4 portrait;margin:14mm}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:#eceef1;color:#000;font-family:Arial,"Helvetica Neue",sans-serif;line-height:1.35}
+.hint{max-width:210mm;margin:16px auto 0;padding:0 max(16px,env(safe-area-inset-left,0px));font-size:14px;color:#333}
+.hint a{color:#2b4f7a}
+.sheet{max-width:210mm;margin:12px auto 32px;background:#fff;padding:14mm 14mm 10mm;border:1px solid #c9ced6}
+h1{margin:0 0 4px;font-size:34px;letter-spacing:.01em;text-align:center;text-transform:uppercase}
+.lead{margin:0 0 14px;text-align:center;font-size:17px}
+h2{margin:14px 0 6px;font-size:24px;border-bottom:3px solid #000;padding-bottom:3px}
+ul{margin:0;padding:0;list-style:none}
+li{position:relative;padding:5px 0 5px 34px;font-size:19px;border-bottom:1px solid #d6d6d6}
+li:last-child{border-bottom:0}
+li::before{position:absolute;left:4px;top:4px;font-weight:700;font-size:21px}
+.do li::before{content:"✓"}
+.dont li::before{content:"✗"}
+.help{margin-top:14px;border:3px solid #000;padding:10px 14px;font-size:19px}
+.help .t{display:block;font-weight:700;font-size:22px;margin-bottom:2px;text-transform:uppercase}
+.help p{margin:4px 0 0}
+.foot{margin:12px 0 0;text-align:center;font-size:13px;color:#333}
+@media screen and (max-width:640px){
+  .sheet{margin:10px 8px 24px;padding:18px 16px}
+  h1{font-size:26px}
+  li{font-size:17px}
+}
+@media print{
+  body{background:#fff}
+  .hint{display:none}
+  .sheet{max-width:none;margin:0;padding:0;border:0}
+  h2,li,.help{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<p class="hint">Print this page on one A4 sheet (Ctrl+P / Share → Print) and put it up inside each lift car. <a href="2026-11-soj-lift-rules.html#residents">Back to the lift rules</a></p>
+
+<div class="sheet">
+  <h1>Lift safety</h1>
+  <p class="lead">For everyone using this lift: residents, guests, staff and delivery partners.</p>
+
+  <h2>Do</h2>
+  <ul class="do">
+    <li>Wait until the lift stops and the doors open fully before you step in or out.</li>
+    <li>Keep within the maximum load shown in this lift.</li>
+    <li>Keep children under 12 with an adult. They must not ride alone.</li>
+    <li>If this lift has manual gates, close both the landing gate and the lift gate properly.</li>
+    <li>In a fire, use the stairs.</li>
+    <li>If the lift stops between floors: press the alarm button, stay calm and wait for help.</li>
+  </ul>
+
+  <h2>Do not</h2>
+  <ul class="dont">
+    <li>Do not use the lift during a fire.</li>
+    <li>Do not overload the lift.</li>
+    <li>Do not stand in the doorway or put your hand between the doors.</li>
+    <li>Do not force the doors open, and never open them while the lift is moving or stuck.</li>
+    <li>Do not use your mobile phone while getting in or out of the lift.</li>
+    <li>Do not use a lift that has a "Not in use" or "Under repair" notice.</li>
+    <li>Do not tamper with buttons, panels, door sensors or any other part of the lift.</li>
+  </ul>
+
+  <div class="help">
+    <span class="t">In an emergency</span>
+    <p>Press the alarm button. Then call the <b>security supervisor</b> or the <b>society manager</b>. Their numbers are in the MyGate app.</p>
+  </div>
+
+  <p class="foot">As required by the Maharashtra Lifts, Escalators and Moving Walks Rules, 2026.</p>
+</div>
+
+</body>
+</html>
