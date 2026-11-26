@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Song of Joy Lift Safety Rules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: full-width reading page, sticky jump bar of section chips, duties grouped into cards with a rule citation on every line (same system as the SOP pages) */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#17202b; --muted:#5b6675; --line:#dde2e8;
+  --accent:#2b4f7a; --accent-soft:#e6edf5;
+  --ok:#1d7a4c; --ok-bg:#e3f3ea; --warn:#9a6200; --warn-bg:#fbf0d9; --bad:#b3261e; --bad-bg:#fbe5e3;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11161d; --surface:#18202a; --fg:#e5e9ee; --muted:#9aa5b3; --line:#2a3542;
+  --accent:#8fb3dc; --accent-soft:#1f2c3b;
+  --ok:#6cc596; --ok-bg:#16301f; --warn:#e5b45c; --warn-bg:#33280f; --bad:#f08a82; --bad-bg:#3a1a18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161d; --surface:#18202a; --fg:#e5e9ee; --muted:#9aa5b3; --line:#2a3542;
+  --accent:#8fb3dc; --accent-soft:#1f2c3b;
+  --ok:#6cc596; --ok-bg:#16301f; --warn:#e5b45c; --warn-bg:#33280f; --bad:#f08a82; --bad-bg:#3a1a18; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:900px){.pad{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+header.top{padding-block:28px 18px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+h1{font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.01em}
+h2{font-size:1.15rem;display:flex;align-items:baseline;gap:10px}
+h2 .n{font-size:.8rem;color:var(--accent);letter-spacing:.06em}
+h3{font-size:.95rem}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+.sub{color:var(--muted);margin:6px 0 0;max-width:80ch}
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-block:1px solid var(--line)}
+nav.jump ul{list-style:none;margin:0;padding-block:10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}
+@media (min-width:900px){nav.jump ul{flex-wrap:wrap;overflow:visible}}
+nav.jump a{display:block;white-space:nowrap;text-decoration:none;color:var(--fg);font-size:.85rem;font-weight:600;padding:4px 11px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+main{padding-block:26px 56px;display:flex;flex-direction:column;gap:38px}
+section{display:flex;flex-direction:column;gap:12px;min-width:0}
+.note{color:var(--muted);font-size:.88rem;margin:0;max-width:90ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.f{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.f p{margin:0;font-size:.9rem}
+.f .meta{color:var(--muted);font-size:.8rem}
+.f.stat b{font-family:var(--font-display);font-size:1.15rem}
+ul.d{margin:0;padding-left:18px;font-size:.92rem;display:flex;flex-direction:column;gap:7px}
+.ref{display:inline-block;margin-left:4px;padding:0 7px;border-radius:999px;font-size:.74rem;font-weight:700;white-space:nowrap;color:var(--accent);background:var(--accent-soft);vertical-align:1px}
+.ref.own{color:var(--muted);background:var(--bg);border:1px dashed var(--line)}
+.check{display:inline-block;margin-left:4px;padding:0 7px;border-radius:999px;font-size:.74rem;font-weight:700;white-space:nowrap;color:var(--warn);background:var(--warn-bg);vertical-align:1px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.9rem}
+thead th{background:var(--accent-soft);font-family:var(--font-display);font-weight:700;font-size:.85rem;white-space:nowrap}
+tbody th{font-weight:600;min-width:140px}
+tr:last-child td,tr:last-child th{border-bottom:0}
+.tbl tbody th,.tbl thead th:first-child{position:sticky;left:0;z-index:1;background:var(--surface);box-shadow:1px 0 0 var(--line)}
+.tbl thead th:first-child{background:var(--accent-soft)}
+.callout{border:1px solid var(--line);border-left-width:4px;border-radius:6px;padding:10px 14px;background:var(--surface);font-size:.9rem;max-width:100ch}
+.callout.bad{border-left-color:var(--bad)} .callout.warn{border-left-color:var(--warn)} .callout.info{border-left-color:var(--accent)}
+.callout p{margin:0} .callout p+p{margin-top:6px}
+ol.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:.92rem;max-width:100ch}
+a{color:var(--accent)}
+a.pdf{display:inline-block;font-weight:700;text-decoration:none;padding:6px 14px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);background:var(--surface)}
+a.pdf:hover,a.pdf:focus-visible{background:var(--accent-soft);outline:none}
+@media (max-width:700px){
+  body{font-size:14px}
+  th,td{padding:6px 8px;font-size:.82rem}
+}
+/* Phones: every table row becomes a card; each cell shows its column name from data-label. Desktop and print keep the table layout. */
+@media screen and (max-width:640px){
+  header.top{padding-block:20px 14px}
+  main{padding-block:20px 40px;gap:30px}
+  .tbl{overflow:visible;border:0;border-radius:0;background:none}
+  .tbl table,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:auto;min-width:0}
+  .tbl table{min-width:0}
+  .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tbl tbody{display:flex;flex-direction:column;gap:8px}
+  .tbl tr{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .tbl tbody th{position:static;box-shadow:none;background:none;min-width:0;padding:0 0 6px;margin-bottom:4px;border-bottom:1px solid var(--line);font-family:var(--font-display);font-size:.95rem}
+  .tbl td{border:0;padding:5px 0;font-size:.9rem;text-align:left;white-space:normal}
+  .tbl td:empty{display:none}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;margin-bottom:2px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+}
+@media print{nav.jump{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top pad">
+  <div class="eyebrow">Gera Song of Joy CHS · Kharadi, Pune</div>
+  <h1>Lift safety rules: who has to do what</h1>
+  <p class="sub">A plain-English summary of the new Maharashtra lift rules, which apply from 1 November 2026. It lists the duties of residents, of the society, and of our lift maintenance (AMC) contractor. Each duty shows the rule it comes from, so anyone can check it against the original text.</p>
+  <p class="sub">November 2026</p>
+  <p class="sub"><a class="pdf" href="state-rules/Maharashtra-Lifts-Escalators-and-Moving-Walks-Rules-2026.pdf" target="_blank" rel="noopener">View the official Rules (PDF) ↗</a> <a class="pdf" href="state-rules/Maharashtra-Lifts-Escalators-and-Moving-Walks-Act-2017.pdf" target="_blank" rel="noopener">View the Act (PDF) ↗</a></p>
+</header>
+
+<nav class="jump pad" aria-label="Sections">
+  <ul>
+    <li><a href="#glance">At a glance</a></li>
+    <li><a href="#cite">Reading the references</a></li>
+    <li><a href="#residents">Residents</a></li>
+    <li><a href="#society">Society</a></li>
+    <li><a href="#contractor">AMC contractor</a></li>
+    <li><a href="#deadlines">Deadlines</a></li>
+    <li><a href="#actions">Next steps</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ul>
+</nav>
+
+<main class="pad">
+
+<section id="glance">
+  <h2><span class="n">00</span>At a glance</h2>
+  <div class="grid">
+    <div class="f stat"><span class="meta">Applies from</span><b>1 November 2026</b><p>The 2017 Act and the new 2026 Rules both took effect on this date. They replace the Bombay Lift Rules, 1958.</p></div>
+    <div class="f stat"><span class="meta">Lift servicing</span><b>At least once a month</b><p>By a government-approved contractor, with every visit recorded in the lift log book. <span class="ref">Rule 10(7)</span></p></div>
+    <div class="f stat"><span class="meta">Safety audit</span><b>At least once a year</b><p>Full test against the official checklist, with the report sent to the Electrical Inspector. <span class="ref">Rule 10(2)</span></p></div>
+    <div class="f stat"><span class="meta">Upgrade deadline for existing lifts</span><b>28 October 2027</b><p>CCTV in the lift car, an automatic rescue device and overload protection. <span class="ref">Rule 9(3)</span> <span class="check">Check date</span></p></div>
+    <div class="f stat"><span class="meta">Accidents</span><b>Report within 24 hours</b><p>To the Electrical Inspector and the local police station. <span class="ref">Rule 11(1)</span> <span class="ref">Act s.15(1)</span></p></div>
+    <div class="f stat"><span class="meta">Penalty for breaking the rules</span><b>Fine up to ₹50,000</b><p>Plus up to ₹1,000 a day if the breach continues after conviction. This applies to anyone who breaks the Act or the Rules. <span class="ref">Act s.32</span></p></div>
+  </div>
+</section>
+
+<section id="cite">
+  <h2><span class="n">01</span>How to read the references</h2>
+  <div class="grid">
+    <div class="f"><h3><span class="ref" style="margin:0">Rule 10(13)</span></h3><p>Rule 10, sub-rule (13) of the <b>Maharashtra Lifts, Escalators and Moving Walks Rules, 2026</b>.</p></div>
+    <div class="f"><h3><span class="ref" style="margin:0">Act s.36(1)</span></h3><p>Section 36, sub-section (1) of the <b>Maharashtra Lifts, Escalators and Moving Walks Act, 2017</b>, the parent law the Rules are made under.</p></div>
+    <div class="f"><h3><span class="ref" style="margin:0">Form ZI-8</span></h3><p>Item 8 of a form attached to the Rules. Forms ZH and ZI are the official safety notices for lift landings and lift cars. Rule 10(9) makes displaying them compulsory.</p></div>
+    <div class="f"><h3><span class="ref own" style="margin:0">Society practice</span></h3><p>Our own good practice, not a legal requirement. It is shown separately so nobody mistakes it for law.</p></div>
+  </div>
+  <p class="note">In March 2026 an amendment to the Act renamed the officials involved. Licences, renewals, repair orders and sealing are now handled by the <b>Superintending Engineer</b>, and inspections by the <b>Electrical Inspector</b>. The duties below are unchanged by it.</p>
+</section>
+
+<section id="residents">
+  <h2><span class="n">02</span>Duties of residents, as lift users</h2>
+  <p class="note">These apply to everyone who uses our lifts: residents, family members, tenants, guests, domestic help and delivery staff.</p>
+  <div class="grid">
+    <div class="f"><h3>Using the lift safely</h3><ul class="d">
+      <li>Do not step in or out until the lift has stopped and the doors are fully open. <span class="ref">Form ZI-2</span></li>
+      <li>Do not carry more than the maximum load shown in the lift. <span class="ref">Form ZI-3</span></li>
+      <li>Do not stand in the doorway, and do not put your hand between the doors. <span class="ref">Form ZI-4</span> <span class="ref">Form ZI-5</span></li>
+      <li>Do not force the doors open while the lift is moving. <span class="ref">Form ZI-6</span> <span class="ref">Form ZI-10</span></li>
+      <li>Do not use your mobile phone while getting into or out of the lift. <span class="ref">Form ZH-6</span> <span class="ref">Form ZI-12</span></li>
+      <li>In lifts with manual gates, close both the landing gate and the car gate properly when you get in or out. <span class="ref">Form ZI-11</span></li>
+    </ul></div>
+    <div class="f"><h3>Children</h3><ul class="d">
+      <li>Children under 12 must not use the lift unless an adult is with them. <span class="ref">Rule 10(13)</span> <span class="ref">Form ZH-5</span> <span class="ref">Form ZI-8</span></li>
+      <li>Parents are responsible for making sure young children do not ride alone. <span class="ref own">Society practice</span></li>
+    </ul></div>
+    <div class="f"><h3>Fire and emergencies</h3><ul class="d">
+      <li>Never use the lift during a fire. Use the stairs. <span class="ref">Form ZH-2</span> <span class="ref">Form ZI-7</span></li>
+      <li>If you are stuck, press the alarm button and stay calm inside. Do not try to open the car door yourself, as it is unsafe. <span class="ref">Form ZI-9</span></li>
+      <li>Call the lift company's service number shown on the landing notice. <span class="ref">Form ZH-7</span></li>
+      <li>Tell the security guard or the society office as well, so the fault is logged. <span class="ref own">Society practice</span></li>
+    </ul></div>
+    <div class="f"><h3>Respecting shutdowns and the equipment</h3><ul class="d">
+      <li>Do not use a lift when the society, the operator or the lift company has put up a notice saying it must not be used. Doing so is an offence. Only repair staff are exempt. <span class="ref">Act s.36(1)</span> <span class="ref">Act s.36(2)</span></li>
+      <li>Do not tamper with any part of the lift: buttons, doors, sensors, panels or the machine room. <span class="ref">Rule 10(10)</span></li>
+      <li>Breaking the Act or the Rules can lead to a fine of up to ₹50,000. <span class="ref">Act s.32</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="society">
+  <h2><span class="n">03</span>Duties of the society</h2>
+  <p class="note">The law places these duties on the "owner" or "licencee" of the lift. For our lifts that is the society, acting through its managing committee. Some duties name the owner's "authorised representative". Where they do, the society can appoint one. Many of these duties rely on reports and certificates from the AMC contractor. Those are listed under <a href="#deliverables">Deliverables to society</a>.</p>
+  <div class="grid">
+    <div class="f"><h3>Licence, notices and insurance</h3><ul class="d">
+      <li>Run each lift only under a valid working licence and its conditions. <span class="ref">Act s.11</span></li>
+      <li>A working licence lasts 20 years. Apply to renew it at least 30 days before it expires, using Form Z and the documents listed. <span class="ref">Rule 7(5)</span> <span class="ref">Rule 7(6)</span> <span class="ref">Act s.8</span></li>
+      <li>If the lifts' ownership changes, for example when the builder hands over to the society, apply to transfer the licence using Form ZD. If a licence is lost, apply for a duplicate using Form ZC. <span class="ref">Rule 8</span></li>
+      <li>Display the lift licence at ground or entry level, and in the lift car. <span class="ref">Rule 10(8)</span> <span class="ref">Form ZI-1</span></li>
+      <li>Put up the official safety notices on every landing (Form ZH) and inside every lift car (Form ZI). <span class="ref">Rule 10(9)</span></li>
+      <li>Hold third-party insurance that covers the risk to passengers. <span class="ref">Act s.23</span></li>
+    </ul></div>
+    <div class="f"><h3>Maintenance</h3><ul class="d">
+      <li>Have a maintenance contract (AMC) with a government-approved lift contractor covering cleaning, oiling, adjusting and repairs. <span class="ref">Act s.18</span> <span class="ref">Act s.7(5)</span> <span class="ref">Rule 10(4)</span></li>
+      <li>Make sure the contractor services and examines every lift at least once a month. <span class="ref">Rule 10(7)</span></li>
+      <li>Keep a log book for each lift (Form ZF). Record every repair and alteration, every breakdown other than a power cut, and any accident. The Electrical Inspector can ask to see it at any time. <span class="ref">Rule 10(5)</span> <span class="ref">Act s.24</span></li>
+      <li>Fix any fault the contractor reports straight away. <span class="ref">Rule 10(6)</span></li>
+      <li>Repair any damaged part, enclosure, gate or fastening straight away. Keep the safety gear in good order and clean. Never allow welding of broken parts that carry the load. <span class="ref">Rule 10(15)</span></li>
+      <li>Do not stop the contractor from carrying out its duties. <span class="ref">Rule 10(4)</span></li>
+      <li>Keep each lift to the Indian Standards (BIS) and National Building Code listed in the Rules. <span class="ref">Rule 10(1)</span> <span class="ref">Rule 9(1)</span></li>
+    </ul></div>
+    <div class="f"><h3>Audits and government inspections</h3><ul class="d">
+      <li>Through the contractor, get each lift audited and tested against the Form R checklist at least once a year, and send the report to the Electrical Inspector. <span class="ref">Rule 10(2)</span></li>
+      <li>The government inspects each lift at least once a year and gives notice first (Form ZM). On the day, give the inspector full access, and have the contractor present if asked. <span class="ref">Act s.17(1)</span> <span class="ref">Act s.14</span> <span class="ref">Rule 12</span></li>
+      <li>If an order says a lift is unsafe (Form ZN), stop using it. Finish the repairs within the time given and confirm in writing once they are done. <span class="ref">Act s.21</span> <span class="ref">Rule 12(2)</span></li>
+      <li>If the order is not followed, the lift can be sealed. <span class="ref">Act s.22</span> <span class="ref">Rule 13(2)</span></li>
+    </ul></div>
+    <div class="f"><h3>Safety upgrades and changes</h3><ul class="d">
+      <li>Every lift car must have CCTV. Existing lifts without CCTV, an Automatic Rescue Device (ARD) or an Overload Protection Device (OLPD) must have all three fitted within one year of the Rules being published. <span class="ref">Rule 9(3)</span> <span class="check">Two sub-rules are numbered (3) in the published text; this is the second</span></li>
+      <li>Do not make changes that affect safety or the lift's basic features, such as capacity, speed or number of stops, without prior written permission. <span class="ref">Act s.10</span> <span class="ref">Rule 10(3)</span> <span class="ref">Rule 5</span></li>
+      <li>Any lift that has been shut for 6 months or more must be tested on site by the contractor before it is used again. <span class="ref">Rule 10(11)</span></li>
+      <li>Tell the Superintending Engineer about any lift that will be shut for more than 6 months or removed for good. If a lift is taken out of use, give notice within one month. <span class="ref">Rule 13(1)</span> <span class="ref">Act s.26</span></li>
+      <li>A lift taken out of use must be removed, or disconnected from power and kept safe, with all its doors locked or barricaded. <span class="ref">Rule 13(3)</span></li>
+      <li>Lifts may be replaced after 20 years, or earlier if the authority directs it at licence renewal. <span class="ref">Act s.27</span> <span class="ref">Act s.8(5)</span></li>
+    </ul></div>
+    <div class="f"><h3>Accidents</h3><ul class="d">
+      <li>Report any accident that causes, or could have caused, injury or death within 24 hours to the Electrical Inspector and the local police station. Send a notice on Form ZK and a detailed report on Form ZL. <span class="ref">Rule 11(1)</span> <span class="ref">Act s.15(1)</span></li>
+      <li>Stop using the lift and do not disturb anything. Restart it only with the Electrical Inspector's written permission. <span class="ref">Act s.15(1)</span> <span class="ref">Form ZK</span></li>
+      <li>The society and the contractor both sign the detailed report (Form ZL). <span class="ref">Form ZL</span></li>
+      <li>Answer the inspector's questions during any inquiry. The law requires it. <span class="ref">Act s.15(5)</span></li>
+      <li>An owner who does not live in the building must appoint a local representative to report accidents, and tell the Electrical Inspector that person's name in writing. <span class="ref">Act s.15(2)</span> <span class="ref">Act s.15(3)</span></li>
+      <li>Name one committee member as the lift contact for accident reports and inspections, and give the name to the Electrical Inspector. <span class="ref own">Society practice</span></li>
+    </ul></div>
+    <div class="f"><h3>Lift operators and accountability</h3><ul class="d">
+      <li>If the society employs a lift operator, that person must be 18 or older, mentally and physically fit, and trained to run the lift. <span class="ref">Rule 10(12)</span></li>
+      <li>When an association breaks the Act, the members who control its affairs can also be held personally liable. They are not liable if they show it happened without their knowledge, or that they took all due care to prevent it. For a society, this can mean managing committee members. <span class="ref">Act s.33</span> <span class="check">Committee to confirm with legal advice</span></li>
+      <li>The licence can be suspended or cancelled if its conditions or the Rules are broken. <span class="ref">Act s.19</span> <span class="ref">Rule 10(14)</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="contractor">
+  <h2><span class="n">04</span>Duties of the lift AMC contractor</h2>
+  <p class="note">The law calls the maintenance company the "approved contractor". When the society hands maintenance to it, the contractor becomes responsible for the duties assigned to it in the contract. <span class="ref">Rule 10(4)</span></p>
+  <div class="grid">
+    <div class="f"><h3>Licence and set-up</h3><ul class="d">
+      <li>Hold a valid government licence to install and maintain lifts (Form L), and renew it at least 30 days before it expires. If renewal is late, the licence becomes void and the contractor must apply afresh. <span class="ref">Rule 6(3)</span> <span class="ref">Rule 6(4)</span> <span class="ref">Rule 6(6)</span></li>
+      <li>To renew, show certificates from at least 10 lift owners confirming their lifts were kept in good condition. <span class="ref">Rule 6(4)</span></li>
+      <li>Keep an office with a telephone in Maharashtra. Open an extra service station in any city where it maintains more than 50 lifts, or more than 100 km from its main office. <span class="ref">Rule 6(2)(i)</span></li>
+      <li>Run a 24×7 phone line to take complaints and emergency calls from lift owners and respond quickly. <span class="ref">Rule 6(2)(iii)(g)</span></li>
+    </ul></div>
+    <div class="f"><h3>Staff and equipment</h3><ul class="d">
+      <li>Employ qualified staff: a licensed electrical supervisor, mechanical and electrical engineers, and an ITI-trained technician, each with the experience the rule sets. <span class="ref">Rule 6(2)(iii)(a)–(d)</span></li>
+      <li>Keep at least one maintenance pair for every 50 lifts it maintains: a mechanic with 5 or more years' experience, and a helper. <span class="ref">Rule 6(2)(iii)(f)</span></li>
+      <li>Give all staff safety gear such as safety belts and helmets. <span class="ref">Rule 6(2)(v)</span></li>
+      <li>Keep a workshop with the required machines, and a vehicle for maintenance visits. <span class="ref">Rule 6(2)(iv)</span> <span class="ref">Rule 6(2)(vi)</span></li>
+      <li>Declare that its employees do not work for any other organisation. <span class="ref">Rule 6(1)(d)</span></li>
+    </ul></div>
+    <div class="f"><h3>Monthly servicing</h3><ul class="d">
+      <li>Service and examine every lift at least once a month, and record the results in the lift log book (Form ZF). <span class="ref">Rule 10(7)</span></li>
+      <li>The Form ZF monthly checklist covers the ropes or belts and sheave, the landing door locks, the brake, the governor and safety gear, the guides and rollers, levelling at each floor, the doors and their sensors, and lubrication of moving parts. It also includes a brake check on an empty car, the Automatic Rescue Device, and any repairs, breakdowns or accidents. <span class="ref">Form ZF</span></li>
+      <li>Do the cleaning, oiling, adjusting and repairs that the contract covers. <span class="ref">Act s.18</span></li>
+      <li>Report faults to the society so they can be fixed straight away. <span class="ref">Rule 10(6)</span></li>
+      <li>Never weld broken load-bearing parts or the parts that support moving passengers. <span class="ref">Rule 10(15)</span></li>
+    </ul></div>
+    <div class="f"><h3>Annual audit, tests and certificates</h3><ul class="d">
+      <li>Audit and test each lift against the Form R checklist at least once a year, or more often if the Electrical Inspector requires it. Certify the results, and make sure the report reaches the Electrical Inspector. <span class="ref">Rule 10(2)</span></li>
+      <li>Form R covers items such as the pit and buffers, the alarm bell, lights and fan, the car capacity notice, the doors and sill gap, the machine room, the brakes, gearbox and ropes, the limit switches, the overspeed governor, the overload trip, the fireman switch, and the log book. <span class="ref">Form R</span></li>
+      <li>Sign the fitness certificate that goes with any licence or renewal application. In it, the contractor states it has examined and tested the lift and found it fit for use. <span class="ref">Act s.7(6)</span> <span class="ref">Rule 7(2)(c)</span> <span class="ref">Rule 7(6)(e)</span></li>
+      <li>Test on site any lift that has been shut for 6 months or more before it is used again. <span class="ref">Rule 10(11)</span></li>
+    </ul></div>
+    <div class="f"><h3>Inspections and accidents</h3><ul class="d">
+      <li>Attend government inspections when the society is asked to have the contractor present. <span class="ref">Act s.14</span> <span class="ref">Form ZM</span></li>
+      <li>Sign the detailed accident report (Form ZL) together with the society. <span class="ref">Form ZL</span></li>
+      <li>The contractor can itself be prosecuted if an accident happens because a safety feature it maintains failed. <span class="ref">Act s.25</span></li>
+    </ul></div>
+    <div class="f" id="deliverables"><h3>Deliverables to society</h3>
+      <p class="meta">Documents the contractor must prepare or sign so the society can meet its own duties in section 03.</p>
+      <ul class="d">
+      <li><b>Monthly:</b> a log book entry (Form ZF) for each lift after every service visit. <span class="ref">Rule 10(7)</span> <span class="ref">Rule 10(5)</span></li>
+      <li><b>When found:</b> a written report of any fault, so the society can fix it straight away. <span class="ref">Rule 10(6)</span></li>
+      <li><b>Yearly:</b> the certified audit and test report on the Form R checklist for each lift, sent to the Electrical Inspector. <span class="ref">Rule 10(2)</span> Give a copy to the society for its records. <span class="ref own">Society practice</span></li>
+      <li><b>For licence renewal, transfer or duplicate:</b> <ul class="d">
+        <li>the lift test report (Form P), signed by the contractor <span class="ref">Rule 7(6)(d)</span> <span class="ref">Rule 8(2)(e)</span> <span class="ref">Form P</span></li>
+        <li>the latest inspection report (Form R) <span class="ref">Rule 7(6)(g)</span> <span class="ref">Rule 8(2)(h)</span></li>
+        <li>the fitness certificate <span class="ref">Act s.7(6)</span> <span class="ref">Rule 7(6)(e)</span> <span class="ref">Rule 8(2)(f)</span></li>
+        <li>for a transfer or duplicate, if the old records are missing: the technical drawing, signed by both the society and the contractor <span class="ref">Rule 8(2)(c)</span></li>
+      </ul></li>
+      <li><b>After a long shutdown:</b> results of the site tests before any lift that has been off for 6 months or more is used again. <span class="ref">Rule 10(11)</span></li>
+      <li><b>After an accident:</b> its signature on the detailed accident report (Form ZL), within the 24-hour deadline. <span class="ref">Form ZL</span> <span class="ref">Rule 11(1)</span></li>
+      <li><b>For the safety notices:</b> the 24×7 service phone number for the Form ZH landing notice. <span class="ref">Rule 6(2)(iii)(g)</span> <span class="ref">Form ZH-7</span></li>
+      <li><b>At the start of the contract and on each renewal:</b> a copy of its valid contractor licence (Form L). The society also needs a copy of the AMC itself for a licence transfer or duplicate. <span class="ref">Rule 6(3)</span> <span class="ref">Rule 8(2)(j)</span> <span class="ref own">Society practice</span></li>
+      <li><b>By mid-2027:</b> a list of which lifts lack CCTV, an Automatic Rescue Device or Overload Protection, with a quote and timeline to fit them before the deadline. <span class="ref">Rule 9(3)</span> <span class="ref own">Society practice</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="deadlines">
+  <h2><span class="n">05</span>Deadlines and routines</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>What</th><th>When</th><th>Who</th><th>Reference</th></tr></thead>
+    <tbody>
+      <tr><th>Servicing and log book entry</th><td data-label="When">Every month, each lift</td><td data-label="Who">Contractor; society checks it is done</td><td data-label="Reference"><span class="ref">Rule 10(7)</span></td></tr>
+      <tr><th>Safety audit and test (Form R)</th><td data-label="When">At least once a year, each lift</td><td data-label="Who">Contractor, for the society</td><td data-label="Reference"><span class="ref">Rule 10(2)</span></td></tr>
+      <tr><th>Government inspection</th><td data-label="When">At least once a year, after notice</td><td data-label="Who">Electrical Inspector; society gives access</td><td data-label="Reference"><span class="ref">Act s.17(1)</span> <span class="ref">Act s.14</span></td></tr>
+      <tr><th>CCTV, ARD and OLPD in existing lifts</th><td data-label="When">By 28 October 2027 <span class="check">Check date</span></td><td data-label="Who">Society</td><td data-label="Reference"><span class="ref">Rule 9(3)</span></td></tr>
+      <tr><th>Accident report</th><td data-label="When">Within 24 hours</td><td data-label="Who">Society; contractor co-signs Form ZL</td><td data-label="Reference"><span class="ref">Rule 11(1)</span> <span class="ref">Act s.15</span></td></tr>
+      <tr><th>Lift working licence renewal</th><td data-label="When">At least 30 days before expiry</td><td data-label="Who">Society</td><td data-label="Reference"><span class="ref">Rule 7(6)</span></td></tr>
+      <tr><th>Contractor licence renewal</th><td data-label="When">At least 30 days before expiry</td><td data-label="Who">Contractor</td><td data-label="Reference"><span class="ref">Rule 6(4)</span></td></tr>
+      <tr><th>Notice of lift taken out of use</th><td data-label="When">Within one month</td><td data-label="Who">Society</td><td data-label="Reference"><span class="ref">Act s.26</span> <span class="ref">Rule 13(1)</span></td></tr>
+      <tr><th>Repairs ordered by the authority</th><td data-label="When">Within the time in the order</td><td data-label="Who">Society, using the contractor</td><td data-label="Reference"><span class="ref">Act s.21(2)</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">The 28 October 2027 date assumes the Rules were published in the Gazette on 28 October 2026, the date of the notification. Rule 9(3) counts one year from publication.</p>
+</section>
+
+<section id="actions">
+  <h2><span class="n">06</span>Suggested next steps for the committee</h2>
+  <p class="note">These are suggestions drawn from the duties above, not extra legal requirements.</p>
+  <ol class="steps">
+    <li>For every lift in A1, A2, A3 and B1, check that a valid working licence exists in the society's name and note its expiry date. If it is still in the builder's name, apply to transfer it. <span class="ref">Rule 8</span></li>
+    <li>Get a copy of the AMC contractor's current Form L licence and check its expiry date. Ask for the 24×7 complaint number in writing. <span class="ref">Rule 6</span></li>
+    <li>Check that the AMC promises monthly servicing, a Form ZF log book entry for each visit, and the yearly Form R audit with the report sent to the Electrical Inspector. <span class="ref">Rule 10(2)</span> <span class="ref">Rule 10(7)</span></li>
+    <li>Ask the contractor which lifts already have CCTV, an ARD and an OLPD, and get a quote and timeline for the rest, well before 28 October 2027. <span class="ref">Rule 9(3)</span></li>
+    <li>Confirm the society holds third-party insurance covering lift passengers. <span class="ref">Act s.23</span></li>
+    <li>Put up the Form ZH notice on every landing and the Form ZI notice in every lift car, together with the licence. <span class="ref">Rule 10(8)</span> <span class="ref">Rule 10(9)</span></li>
+    <li>Brief the security team: a lift that has had an accident must be stopped and left untouched, and the committee contact must be told at once so the 24-hour report can go out. <span class="ref">Act s.15(1)</span> <span class="ref">Rule 11(1)</span></li>
+    <li>Tell residents about the under-12 rule and the "do not use" notices. <span class="ref">Rule 10(13)</span> <span class="ref">Act s.36</span></li>
+  </ol>
+</section>
+
+<section id="sources">
+  <h2><span class="n">07</span>Sources</h2>
+  <ul class="d">
+    <li><b>Maharashtra Lifts, Escalators and Moving Walks Rules, 2026</b>, Energy Department notification No. CEI-2025/C.R.55/Energy-1, dated 28 October 2026. Rules 5 to 13, the Annexure and Forms P, R, ZF, ZH, ZI, ZK, ZL, ZM and ZN were used. <a href="state-rules/Maharashtra-Lifts-Escalators-and-Moving-Walks-Rules-2026.pdf" target="_blank" rel="noopener">View the Rules (PDF, opens in a new tab) ↗</a></li>
+    <li><b>Maharashtra Lifts, Escalators and Moving Walks Act, 2017</b> (Mah. XV of 2018), with the Amendment Act, 2026 (Mah. 12 of 2026). Sections 7, 8, 10, 11, 14, 15, 17 to 27, 32, 33 and 36 were used. <a href="state-rules/Maharashtra-Lifts-Escalators-and-Moving-Walks-Act-2017.pdf" target="_blank" rel="noopener">View the Act (PDF, opens in a new tab) ↗</a>. This is the official English translation published in the Maharashtra Government Gazette. It does not include the 2026 amendment, which is in <a href="https://prsindia.org/files/bills_acts/acts_states/maharashtra/2018/2018MH15.pdf" target="_blank" rel="noopener">this PRS Legislative Research copy (PDF) ↗</a>.</li>
+    <li>Start date and background: <a href="https://www.punekarnews.in/?p=248971">Punekar News, November 2026</a> and <a href="https://www.scconline.com/blog/post/2026/10/28/maharashtra-lifts-escalators-moving-walks-act-2017-comes-into-force/">SCC Online, 28 October 2026</a>.</li>
+  </ul>
+  <div class="callout warn"><p>This summary is for residents' awareness. It is not legal advice and does not replace the official text. Where this page and the Gazette differ, the Gazette prevails. Please report any error to the society office.</p></div>
+</section>
+
+</main>
+</body>
+</html>
