@@ -87,6 +87,28 @@ a{color:var(--accent)}
   table{min-width:540px}
   .tl li{grid-template-columns:72px 1fr}
 }
+/* Phones: every table row becomes a card; each cell shows its column name from data-label. Desktop and print keep the table layout. */
+.grid{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+@media screen and (max-width:640px){
+  header.top{padding-block:20px 14px}
+  main{padding-block:20px 40px;gap:30px}
+  .tl li{grid-template-columns:84px 1fr;gap:10px}
+  .tl time{white-space:normal}
+  .tbl{overflow:visible;border:0;border-radius:0;background:none}
+  .tbl table,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:auto;min-width:0}
+  .tbl table{min-width:0}
+  .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tbl tbody{display:flex;flex-direction:column;gap:8px}
+  .tbl tr{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .tbl tbody th,.tbl tr.key th{position:static;box-shadow:none;background:none;min-width:0;padding:0 0 6px;margin-bottom:4px;border-bottom:1px solid var(--line);font-family:var(--font-display);font-size:.95rem}
+  .tbl td{border:0;padding:5px 0;font-size:.9rem;text-align:left;white-space:normal}
+  .tbl td:empty{display:none}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;margin-bottom:2px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .tbl td.num{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .tbl td.num::before{margin:0}
+  .tbl tr.key{background:var(--accent-soft)}
+  .tbl tr.key td{background:none}
+}
 </style>
 
 <header class="top pad">
@@ -146,11 +168,11 @@ a{color:var(--accent)}
   <div class="tbl"><table>
     <thead><tr><th>Post</th><th>Covers</th><th>Day</th><th>Night</th><th>Per day</th></tr></thead>
     <tbody>
-      <tr><th>P1 building guard</th><td>One per building: A1, A2, A3, B1</td><td class="num">4</td><td class="num">4</td><td class="num">8</td></tr>
-      <tr><th>P3 entrance guard</th><td>A3 entrance and B1 entrance</td><td class="num">2</td><td class="num">2</td><td class="num">4</td></tr>
-      <tr><th>Rear ramp guard</th><td>Ramp from A1 to B1, incl. P2 level</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
-      <tr><th>Supervisor</th><td>All of SOJ; moves between posts</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
-      <tr class="key"><th>Total</th><td></td><td class="num"><b>8</b></td><td class="num"><b>8</b></td><td class="num"><b>16</b></td></tr>
+      <tr><th>P1 building guard</th><td data-label="Covers">One per building: A1, A2, A3, B1</td><td class="num" data-label="Day">4</td><td class="num" data-label="Night">4</td><td class="num" data-label="Per day">8</td></tr>
+      <tr><th>P3 entrance guard</th><td data-label="Covers">A3 entrance and B1 entrance</td><td class="num" data-label="Day">2</td><td class="num" data-label="Night">2</td><td class="num" data-label="Per day">4</td></tr>
+      <tr><th>Rear ramp guard</th><td data-label="Covers">Ramp from A1 to B1, incl. P2 level</td><td class="num" data-label="Day">1</td><td class="num" data-label="Night">1</td><td class="num" data-label="Per day">2</td></tr>
+      <tr><th>Supervisor</th><td data-label="Covers">All of SOJ; moves between posts</td><td class="num" data-label="Day">1</td><td class="num" data-label="Night">1</td><td class="num" data-label="Per day">2</td></tr>
+      <tr class="key"><th>Total</th><td data-label="Covers"></td><td class="num" data-label="Day"><b>8</b></td><td class="num" data-label="Night"><b>8</b></td><td class="num" data-label="Per day"><b>16</b></td></tr>
     </tbody>
   </table></div>
   <div class="grid">
@@ -178,9 +200,9 @@ a{color:var(--accent)}
   <div class="tbl"><table>
     <thead><tr><th>Level</th><th>Visitors and guests</th><th>Residents</th><th>Deliveries, maids</th><th>Goods and shifting</th></tr></thead>
     <tbody>
-      <tr><th>P1<span class="small">all buildings</span></th><td><span class="c ok">Yes</span> Visitors are entered in MyGate and approved here. No guest parking; short-stay two-wheeler spots for delivery staff only.</td><td><span class="c ok">Yes</span></td><td><span class="c ok">Yes</span> Intercepted and logged here.</td><td><span class="c bad">No</span></td></tr>
-      <tr><th>P2<span class="small">rear ramp</span></th><td><span class="c bad">No</span></td><td><span class="c ok">Yes</span> With access cards. After 11 pm, cabs carrying residents enter here.</td><td><span class="c bad">No</span></td><td><span class="c ok">Yes</span> A1, A2, A3. Supervisor approves.</td></tr>
-      <tr><th>P3<span class="small">A3 and B1 entrances</span></th><td><span class="c ok">Drive through</span> Guest vehicles enter here, are logged against the flat, and follow the driveway to P1 for visitor entry. They park on the rear ramp via the A3 P3 route.</td><td><span class="c ok">Yes</span> Entry and exit of resident vehicles logged.</td><td><span class="c warn">Check only</span> Confirm the address; no MyGate entry here.</td><td><span class="c ok">Yes</span> B1 only.</td></tr>
+      <tr><th>P1<span class="small">all buildings</span></th><td data-label="Visitors and guests"><span class="c ok">Yes</span> Visitors are entered in MyGate and approved here. No guest parking; short-stay two-wheeler spots for delivery staff only.</td><td data-label="Residents"><span class="c ok">Yes</span></td><td data-label="Deliveries, maids"><span class="c ok">Yes</span> Intercepted and logged here.</td><td data-label="Goods and shifting"><span class="c bad">No</span></td></tr>
+      <tr><th>P2<span class="small">rear ramp</span></th><td data-label="Visitors and guests"><span class="c bad">No</span></td><td data-label="Residents"><span class="c ok">Yes</span> With access cards. After 11 pm, cabs carrying residents enter here.</td><td data-label="Deliveries, maids"><span class="c bad">No</span></td><td data-label="Goods and shifting"><span class="c ok">Yes</span> A1, A2, A3. Supervisor approves.</td></tr>
+      <tr><th>P3<span class="small">A3 and B1 entrances</span></th><td data-label="Visitors and guests"><span class="c ok">Drive through</span> Guest vehicles enter here, are logged against the flat, and follow the driveway to P1 for visitor entry. They park on the rear ramp via the A3 P3 route.</td><td data-label="Residents"><span class="c ok">Yes</span> Entry and exit of resident vehicles logged.</td><td data-label="Deliveries, maids"><span class="c warn">Check only</span> Confirm the address; no MyGate entry here.</td><td data-label="Goods and shifting"><span class="c ok">Yes</span> B1 only.</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -345,10 +367,10 @@ a{color:var(--accent)}
   <div class="tbl"><table>
     <thead><tr><th>Building</th><th>Shift through</th><th>Shifting charge</th><th>Hours</th></tr></thead>
     <tbody>
-      <tr><th>A1</th><td>P2</td><td class="num">₹1,500 + GST</td><td>8 am to 8 pm</td></tr>
-      <tr><th>A2</th><td>P2</td><td class="num">₹1,500 + GST</td><td>8 am to 8 pm</td></tr>
-      <tr><th>A3</th><td>P2</td><td class="num">₹2,000 + GST</td><td>8 am to 8 pm</td></tr>
-      <tr><th>B1</th><td>P3</td><td class="num">₹1,500 + GST</td><td>8 am to 8 pm</td></tr>
+      <tr><th>A1</th><td data-label="Shift through">P2</td><td class="num" data-label="Shifting charge">₹1,500 + GST</td><td data-label="Hours">8 am to 8 pm</td></tr>
+      <tr><th>A2</th><td data-label="Shift through">P2</td><td class="num" data-label="Shifting charge">₹1,500 + GST</td><td data-label="Hours">8 am to 8 pm</td></tr>
+      <tr><th>A3</th><td data-label="Shift through">P2</td><td class="num" data-label="Shifting charge">₹2,000 + GST</td><td data-label="Hours">8 am to 8 pm</td></tr>
+      <tr><th>B1</th><td data-label="Shift through">P3</td><td class="num" data-label="Shifting charge">₹1,500 + GST</td><td data-label="Hours">8 am to 8 pm</td></tr>
     </tbody>
   </table></div>
   <p class="note">The charge applies to every tenant move in or out, and to any movement of heavy or bulky goods, furniture or construction material.</p>
@@ -394,11 +416,11 @@ a{color:var(--accent)}
   <div class="tbl"><table>
     <thead><tr><th>Area</th><th>A1 and A2</th><th>A3</th><th>B1</th></tr></thead>
     <tbody>
-      <tr><th>P1 / P2 parking and lobby</th><td>On 6 pm, off 6 am</td><td>On 6 pm, off 6 am</td><td>On 6 pm, off 6 am <span class="small">includes P3</span></td></tr>
-      <tr><th>P3 parking</th><td>A2 P3: on 24×7 <span class="small">motion sensors, do not touch</span></td><td>On 24×7 <span class="small">motion sensors, do not touch</span></td><td>As above</td></tr>
-      <tr><th>Floor lobbies</th><td>On 24×7</td><td>On 24×7</td><td>One in three on 24×7</td></tr>
-      <tr><th>Staircases</th><td>On 6 pm, off 6 am</td><td>On 6 pm, off 6 am</td><td>Alternate lights, on 6 pm, off 6 am</td></tr>
-      <tr><th>Fire exit staircases</th><td>Off 24×7</td><td>Off 24×7</td><td>Alternate lights, on 6 pm, off 6 am</td></tr>
+      <tr><th>P1 / P2 parking and lobby</th><td data-label="A1 and A2">On 6 pm, off 6 am</td><td data-label="A3">On 6 pm, off 6 am</td><td data-label="B1">On 6 pm, off 6 am <span class="small">includes P3</span></td></tr>
+      <tr><th>P3 parking</th><td data-label="A1 and A2">A2 P3: on 24×7 <span class="small">motion sensors, do not touch</span></td><td data-label="A3">On 24×7 <span class="small">motion sensors, do not touch</span></td><td data-label="B1">As above</td></tr>
+      <tr><th>Floor lobbies</th><td data-label="A1 and A2">On 24×7</td><td data-label="A3">On 24×7</td><td data-label="B1">One in three on 24×7</td></tr>
+      <tr><th>Staircases</th><td data-label="A1 and A2">On 6 pm, off 6 am</td><td data-label="A3">On 6 pm, off 6 am</td><td data-label="B1">Alternate lights, on 6 pm, off 6 am</td></tr>
+      <tr><th>Fire exit staircases</th><td data-label="A1 and A2">Off 24×7</td><td data-label="A3">Off 24×7</td><td data-label="B1">Alternate lights, on 6 pm, off 6 am</td></tr>
     </tbody>
   </table></div>
   <p class="note">If it is still dark at 6 am because of the season, keep parking and lobby lights on.</p>
@@ -509,11 +531,11 @@ a{color:var(--accent)}
   <div class="tbl"><table>
     <thead><tr><th>Violation</th><th>Who</th><th>Penalty</th></tr></thead>
     <tbody>
-      <tr><th>Alcohol on duty</th><td>Guard</td><td><span class="c bad">Removed immediately</span> Zero tolerance.</td></tr>
-      <tr><th>Sleeping on duty</th><td>Guard</td><td>₹250 per instance. <span class="c bad">Removed on 3rd instance</span></td></tr>
-      <tr><th>Personal phone, movies or headphones on duty</th><td>Guard</td><td>₹250 per instance. <span class="c bad">Removed on 3rd instance</span></td></tr>
-      <tr><th>Gross departure from this SOP</th><td>Shift supervisor</td><td>₹250</td></tr>
-      <tr><th>Violation flagged by an MC member or SOJ resident</th><td>Guard</td><td><span class="c bad">Replaced immediately</span></td></tr>
+      <tr><th>Alcohol on duty</th><td data-label="Who">Guard</td><td data-label="Penalty"><span class="c bad">Removed immediately</span> Zero tolerance.</td></tr>
+      <tr><th>Sleeping on duty</th><td data-label="Who">Guard</td><td data-label="Penalty">₹250 per instance. <span class="c bad">Removed on 3rd instance</span></td></tr>
+      <tr><th>Personal phone, movies or headphones on duty</th><td data-label="Who">Guard</td><td data-label="Penalty">₹250 per instance. <span class="c bad">Removed on 3rd instance</span></td></tr>
+      <tr><th>Gross departure from this SOP</th><td data-label="Who">Shift supervisor</td><td data-label="Penalty">₹250</td></tr>
+      <tr><th>Violation flagged by an MC member or SOJ resident</th><td data-label="Who">Guard</td><td data-label="Penalty"><span class="c bad">Replaced immediately</span></td></tr>
     </tbody>
   </table></div>
 </section>

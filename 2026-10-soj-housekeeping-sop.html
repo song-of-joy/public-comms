@@ -103,6 +103,41 @@ table.ck li::before{content:"";width:16px;height:16px;margin-top:2px;border:2px 
 table.ck .when{display:block;font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:.9rem;margin:6px 0 2px}
 table.ck .when:first-child{margin-top:0}
 table.ck td.need{background:var(--accent-soft)}
+/* Phones: every table row becomes a card; each cell shows its column name from data-label. Desktop and print keep the table layout. */
+.grid{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+@media screen and (max-width:640px){
+  header.top{padding-block:20px 14px}
+  main{padding-block:20px 40px;gap:30px}
+  .tl li{grid-template-columns:84px 1fr;gap:10px}
+  .tl time{white-space:normal}
+  .tbl{overflow:visible;border:0;border-radius:0;background:none}
+  .tbl table,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:auto;min-width:0}
+  .tbl table{min-width:0}
+  .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tbl tbody{display:flex;flex-direction:column;gap:8px}
+  .tbl tr{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .tbl tbody th,.tbl tr.key th{position:static;box-shadow:none;background:none;min-width:0;padding:0 0 6px;margin-bottom:4px;border-bottom:1px solid var(--line);font-family:var(--font-display);font-size:.95rem}
+  .tbl td{border:0;padding:5px 0;font-size:.9rem;text-align:left;white-space:normal}
+  .tbl td:empty{display:none}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;margin-bottom:2px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .tbl td.num{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .tbl td.num::before{margin:0}
+  .tbl tr.key{background:var(--accent-soft)}
+  .tbl tr.key td{background:none}
+}
+@media screen and (max-width:640px){
+  /* Weekly schedule: show only the days a task falls on, as chips */
+  .tbl table.wk td.dash{display:none}
+  .tbl table.wk td.dot{display:inline-block;padding:4px 6px 0 0;font-size:0}
+  .tbl table.wk td.dot::before{display:inline-block;margin:0;padding:1px 10px;border-radius:999px;font-size:.8rem;font-weight:700;text-transform:none;letter-spacing:0;color:var(--accent);background:var(--accent-soft)}
+  /* Checklist: one card per column (Daily, Monthly, Quarterly, Yearly, When needed) */
+  .tbl table.ck tbody{gap:0}
+  .tbl table.ck tr{display:flex;flex-direction:column;gap:8px;padding:0;border:0;background:none}
+  .tbl table.ck tr+tr{margin-top:8px}
+  .tbl table.ck td{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:.95rem}
+  .tbl table.ck td.need{background:var(--accent-soft)}
+  .tbl table.ck td[data-label]::before{margin-bottom:8px;font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:none;letter-spacing:0;color:var(--fg)}
+}
 </style>
 
 <header class="top pad">
@@ -175,13 +210,13 @@ table.ck td.need{background:var(--accent-soft)}
   <div class="tbl"><table>
     <thead><tr><th>Task</th><th>Area</th><th>Method</th></tr></thead>
     <tbody>
-      <tr><th>Floor lobbies</th><td>All floors, all buildings</td><td>Broom and mop</td></tr>
-      <tr><th>Glass doors</th><td>Lobby glass doors</td><td>Wipe and sanitise</td></tr>
-      <tr><th>Elevators</th><td>All lifts</td><td>Clean and sanitise</td></tr>
-      <tr><th>Common toilets</th><td>All common toilets</td><td>Clean and sanitise</td></tr>
-      <tr><th>Society office and intercom room</th><td>Office, intercom room</td><td>Broom and mop</td></tr>
-      <tr><th>Passenger staircase</th><td>All buildings</td><td>Broom and mop</td></tr>
-      <tr><th>Garbage and OWC</th><td>Collection point, OWC area</td><td>See <a href="#garbage">Garbage &amp; OWC</a></td></tr>
+      <tr><th>Floor lobbies</th><td data-label="Area">All floors, all buildings</td><td data-label="Method">Broom and mop</td></tr>
+      <tr><th>Glass doors</th><td data-label="Area">Lobby glass doors</td><td data-label="Method">Wipe and sanitise</td></tr>
+      <tr><th>Elevators</th><td data-label="Area">All lifts</td><td data-label="Method">Clean and sanitise</td></tr>
+      <tr><th>Common toilets</th><td data-label="Area">All common toilets</td><td data-label="Method">Clean and sanitise</td></tr>
+      <tr><th>Society office and intercom room</th><td data-label="Area">Office, intercom room</td><td data-label="Method">Broom and mop</td></tr>
+      <tr><th>Passenger staircase</th><td data-label="Area">All buildings</td><td data-label="Method">Broom and mop</td></tr>
+      <tr><th>Garbage and OWC</th><td data-label="Area">Collection point, OWC area</td><td data-label="Method">See <a href="#garbage">Garbage &amp; OWC</a></td></tr>
     </tbody>
   </table></div>
 </section>
@@ -192,11 +227,11 @@ table.ck td.need{background:var(--accent-soft)}
   <div class="tbl"><table class="wk">
     <thead><tr><th>Task</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>
     <tbody>
-      <tr><th>Fire staircase: broom and mop</th><td class="d dot">●</td><td class="d dash">–</td><td class="d dot">●</td><td class="d dash">–</td><td class="d dot">●</td><td class="d dash">–</td><td class="d dash">–</td></tr>
-      <tr><th>P1, P2, P3: broom and clean</th><td class="d dash">–</td><td class="d dot">●</td><td class="d dash">–</td><td class="d dot">●</td><td class="d dash">–</td><td class="d dot">●</td><td class="d dash">–</td></tr>
-      <tr><th>Passenger staircase: handrails and grills</th><td class="d dash">–</td><td class="d dash">–</td><td class="d dot">●</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td></tr>
-      <tr><th>Fire staircase: handrails, grills, window glass</th><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dot">●</td></tr>
-      <tr><th>Cobwebs: all parkings and all lobbies</th><td class="d dash">–</td><td class="d dot">●</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td><td class="d dash">–</td></tr>
+      <tr><th>Fire staircase: broom and mop</th><td class="d dot" data-label="Mon">●</td><td class="d dash" data-label="Tue">–</td><td class="d dot" data-label="Wed">●</td><td class="d dash" data-label="Thu">–</td><td class="d dot" data-label="Fri">●</td><td class="d dash" data-label="Sat">–</td><td class="d dash" data-label="Sun">–</td></tr>
+      <tr><th>P1, P2, P3: broom and clean</th><td class="d dash" data-label="Mon">–</td><td class="d dot" data-label="Tue">●</td><td class="d dash" data-label="Wed">–</td><td class="d dot" data-label="Thu">●</td><td class="d dash" data-label="Fri">–</td><td class="d dot" data-label="Sat">●</td><td class="d dash" data-label="Sun">–</td></tr>
+      <tr><th>Passenger staircase: handrails and grills</th><td class="d dash" data-label="Mon">–</td><td class="d dash" data-label="Tue">–</td><td class="d dot" data-label="Wed">●</td><td class="d dash" data-label="Thu">–</td><td class="d dash" data-label="Fri">–</td><td class="d dash" data-label="Sat">–</td><td class="d dash" data-label="Sun">–</td></tr>
+      <tr><th>Fire staircase: handrails, grills, window glass</th><td class="d dash" data-label="Mon">–</td><td class="d dash" data-label="Tue">–</td><td class="d dash" data-label="Wed">–</td><td class="d dash" data-label="Thu">–</td><td class="d dash" data-label="Fri">–</td><td class="d dash" data-label="Sat">–</td><td class="d dot" data-label="Sun">●</td></tr>
+      <tr><th>Cobwebs: all parkings and all lobbies</th><td class="d dash" data-label="Mon">–</td><td class="d dot" data-label="Tue">●</td><td class="d dash" data-label="Wed">–</td><td class="d dash" data-label="Thu">–</td><td class="d dash" data-label="Fri">–</td><td class="d dash" data-label="Sat">–</td><td class="d dash" data-label="Sun">–</td></tr>
     </tbody>
   </table></div>
   <p class="note">Tuesday is the heaviest day: parking levels and cobwebs fall together. Plan staff accordingly.</p>
@@ -237,13 +272,13 @@ table.ck td.need{background:var(--accent-soft)}
   <div class="tbl"><table>
     <thead><tr><th>Task</th><th>Frequency</th></tr></thead>
     <tbody>
-      <tr><th>Collect garbage and segregate dry and wet waste</th><td><span class="c info">Daily</span></td></tr>
-      <tr><th>Clear dry waste by tempo</th><td><span class="c info">Daily</span></td></tr>
-      <tr><th>Feed wet waste into the OWC</th><td><span class="c info">Daily</span></td></tr>
-      <tr><th>Clean the OWC area</th><td><span class="c info">Daily</span></td></tr>
-      <tr><th>Screen and remove OWC manure</th><td>When the manure is ready</td></tr>
-      <tr><th>Send dry manure away</th><td>Every two cycles, once dry</td></tr>
-      <tr><th>Clear or sell recyclable waste</th><td>When needed</td></tr>
+      <tr><th>Collect garbage and segregate dry and wet waste</th><td data-label="Frequency"><span class="c info">Daily</span></td></tr>
+      <tr><th>Clear dry waste by tempo</th><td data-label="Frequency"><span class="c info">Daily</span></td></tr>
+      <tr><th>Feed wet waste into the OWC</th><td data-label="Frequency"><span class="c info">Daily</span></td></tr>
+      <tr><th>Clean the OWC area</th><td data-label="Frequency"><span class="c info">Daily</span></td></tr>
+      <tr><th>Screen and remove OWC manure</th><td data-label="Frequency">When the manure is ready</td></tr>
+      <tr><th>Send dry manure away</th><td data-label="Frequency">Every two cycles, once dry</td></tr>
+      <tr><th>Clear or sell recyclable waste</th><td data-label="Frequency">When needed</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -290,7 +325,7 @@ table.ck td.need{background:var(--accent-soft)}
     <thead><tr><th>Daily</th><th>Monthly</th><th>Quarterly</th><th>Yearly</th></tr></thead>
     <tbody>
       <tr>
-        <td>
+        <td data-label="Daily">
           <span class="when">Every day</span>
           <ul>
             <li>Lobbies: broom and mop</li>
@@ -315,7 +350,7 @@ table.ck td.need{background:var(--accent-soft)}
           <span class="when">Sunday</span>
           <ul><li>Fire stairs: handrails, grills, window glass</li></ul>
         </td>
-        <td>
+        <td data-label="Monthly">
           <span class="when">5th and 19th</span>
           <ul><li>Fire room, DG room, meter room<br><span class="small">Dry cloth only on panels. MEP staff must be there.</span></li></ul>
           <span class="when">10th and 24th</span>
@@ -328,11 +363,11 @@ table.ck td.need{background:var(--accent-soft)}
           <ul><li>Fire duct</li><li>Lobby duct</li></ul>
           <p class="small">Keys for terrace and meter room: ask security.</p>
         </td>
-        <td>
+        <td data-label="Quarterly">
           <span class="when">Every 3 months</span>
           <ul><li>Duct windows: deep clean</li></ul>
         </td>
-        <td>
+        <td data-label="Yearly">
           <span class="when">2 times a year</span>
           <ul><li>P1, P2, P3: wash with water</li></ul>
           <span class="when">1 time a year</span>
