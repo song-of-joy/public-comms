@@ -72,6 +72,31 @@ tr.key td,tr.key th{background:var(--accent-soft)}
 .f ul{margin:0;padding-left:18px;font-size:.88rem;display:flex;flex-direction:column;gap:3px}
 ol.next{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;max-width:85ch}
 a{color:var(--accent)}
+/* Jump bar: sticky row of section chips, full-bleed inside .wrap (same system as the SOP pages) */
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-block:1px solid var(--line);margin-inline:calc(-1 * clamp(16px,2.5vw,40px));padding-inline:clamp(16px,2.5vw,40px)}
+nav.jump ul{list-style:none;margin:0;padding:10px 0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}
+@media (min-width:900px){nav.jump ul{flex-wrap:wrap;overflow:visible}}
+nav.jump a{display:block;white-space:nowrap;text-decoration:none;color:var(--fg);font-size:.85rem;font-weight:600;padding:4px 11px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+/* Below 900px the jump bar becomes a "Sections" menu (checkbox toggle, no scrollbar); desktop keeps the chips. */
+.nav-toggle{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.nav-btn{display:none}
+@media (max-width:899px){
+  nav.jump{padding-block:8px}
+  .nav-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font-family:var(--font-display);font-weight:700;font-size:.95rem;cursor:pointer;user-select:none}
+  .nav-btn::after{content:"\2630";font-size:1.15rem;line-height:1}
+  .nav-toggle:checked + .nav-btn::after{content:"\2715"}
+  .nav-toggle:focus-visible + .nav-btn{outline:2px solid var(--accent);outline-offset:2px}
+  nav.jump ul{display:none;flex-direction:column;flex-wrap:nowrap;gap:2px;padding:6px 0 2px;overflow-x:hidden;overflow-y:auto;max-height:calc(100vh - 120px)}
+  .nav-toggle:checked ~ ul{display:flex}
+  nav.jump a{border:0;border-radius:6px;background:none;padding:10px 12px;font-size:.95rem;white-space:normal}
+  nav.jump a:hover,nav.jump a:focus-visible{background:var(--accent-soft)}
+}
+/* First menu item: back to the documents index */
+nav.jump a.home{color:var(--accent);border-color:var(--accent)}
+@media (max-width:899px){nav.jump a.home{border:0;border-bottom:1px solid var(--line);border-radius:0}}
 </style>
 
 <div class="wrap">
@@ -81,8 +106,24 @@ a{color:var(--accent)}
   <p class="sub">Harrier, Beta Force, K Samraat, Agility (AMS), Seven Seas, Securise (two quotes: compliant and non-compliant), Diksha and Unisec, checked against Maharashtra minimum wages for Jul–Dec 2026. All figures in ₹ per month, before 18% GST unless marked.</p>
   <p class="sub"><a href="https://drive.google.com/drive/folders/1FcZE9UWBKTIp7FK_6edIhZPAEgT0Zjbp?usp=sharing" target="_blank" rel="noopener"><b>Open the original quotation documents (Google Drive) ↗</b></a></p>
 </header>
+<nav class="jump" aria-label="Sections">
+  <input type="checkbox" id="nav-toggle" class="nav-toggle"><label for="nav-toggle" class="nav-btn">Sections</label>
+  <ul onclick="if(event.target.closest('a'))document.getElementById('nav-toggle').checked=false">
+    <li><a class="home" href="index.html">← All documents</a></li>
+    <li><a href="#verdict">Verdict</a></li>
+    <li><a href="#benchmark">Wage benchmark</a></li>
+    <li><a href="#wage-base">Wage base</a></li>
+    <li><a href="#price">Price per person</a></li>
+    <li><a href="#monthly">Monthly bill</a></li>
+    <li><a href="#statutory">Statutory items</a></li>
+    <li><a href="#paperwork">Paperwork</a></li>
+    <li><a href="#red-flags">Red flags</a></li>
+    <li><a href="#before-deciding">Before deciding</a></li>
+  </ul>
+</nav>
 
-<section>
+
+<section id="verdict">
   <h2><span class="n">VERDICT</span>Where each agency stands</h2>
   <div class="verdict">
     <div class="v"><span class="c ok">Shortlist</span><b>Harrier</b><p>Most complete compliance at a mid price once full-month cover is priced in. No licence or contract terms supplied yet.</p></div>
@@ -97,7 +138,7 @@ a{color:var(--accent)}
   </div>
 </section>
 
-<section>
+<section id="benchmark">
   <h2><span class="n">01</span>Minimum wage benchmark</h2>
   <p class="note">Maharashtra Zone I (Pune Municipal Corporation limits), special allowance notified 5 Aug 2026, valid 1 Jul–31 Dec 2026.</p>
   <div class="tbl"><table>
@@ -111,7 +152,7 @@ a{color:var(--accent)}
   <p class="note">These rates are for an 8-hour day. Every quote prices a 12-hour shift on this 8-hour wage with no overtime. That is common in the trade but not what the law requires. Pune Security Guard Board rates apply only to board-registered guards; I could not verify the current board rate from an official source.</p>
 </section>
 
-<section>
+<section id="wage-base">
   <h2><span class="n">02</span>Wage base vs minimum</h2>
   <div class="tbl"><table>
     <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th><th>Unisec</th></tr></thead>
@@ -142,7 +183,7 @@ a{color:var(--accent)}
   <p class="note">Higher take-home usually means lower guard turnover. Securise (compliant) pays the most in hand (₹20,191), then Harrier (₹19,287). K Samraat pays the least (₹15,414). Every bid prices a 12-hour shift; only Unisec pays anything for the 4 hours beyond the 8-hour legal day (₹3,146/month, well below the double rate the law sets for overtime).</p>
 </section>
 
-<section>
+<section id="price">
   <h2><span class="n">03</span>Price per person</h2>
   <div class="tbl"><table>
     <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th><th>Unisec</th></tr></thead>
@@ -158,7 +199,7 @@ a{color:var(--accent)}
   <p class="note">The full-month row is the fair comparison. A 26-day rate covers 26 days; the remaining 4 days need a reliever at the same rate. Diksha's base rates (25,500 / 28,500) are identical to Beta Force's; Diksha adds a 10% fee on top. Unisec does not say how many days its guard and supervisor rates cover; if they are 26-day rates, its full-month guard cost rises to ₹27,864.</p>
 </section>
 
-<section>
+<section id="monthly">
   <h2><span class="n">04</span>Monthly bill for Song of Joy</h2>
   <p class="note">Basis: 11 guard posts + 2 supervisor posts, covered every day. Headcount taken from the Seven Seas sheet ("new deployment"); bouncer excluded because not every agency quoted one. Confirm the headcount.</p>
   <div class="tbl"><table>
@@ -173,7 +214,7 @@ a{color:var(--accent)}
   <p class="note">Seven Seas appears to be the current agency. Its sheet shows today's bill at ₹4,43,019/month with GST (15 staff incl. bouncer) and proposes ₹4,77,702 with one reliever added, a rise of ₹34,683/month. Securise's own totals for 14 staff (10 guards, 1 lady guard, 2 supervisors, 1 bouncer) are ₹4,58,286 with GST (compliant) and ₹3,86,804 with GST (non-compliant). Both exclude relievers for weekly offs, which are billed extra. Unisec's own total for 14 staff (11 guards/lady guards, 2 supervisors, 1 bouncer) is ₹4,42,887 with GST, with the same headcount as this table plus a bouncer.</p>
 </section>
 
-<section>
+<section id="statutory">
   <h2><span class="n">05</span>Statutory items in the guard rate</h2>
   <div class="tbl"><table>
     <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th><th>Unisec</th></tr></thead>
@@ -192,7 +233,7 @@ a{color:var(--accent)}
   <p class="note">Beta Force bills 4 national holidays extra (incl. 2 Oct). If an agency skips PF or ESIC, the society as principal employer can be held liable.</p>
 </section>
 
-<section class="text-table">
+<section id="paperwork" class="text-table">
   <h2><span class="n">06</span>Paperwork and contract terms</h2>
   <div class="tbl"><table>
     <thead><tr><th>Item</th><th>Harrier</th><th>Beta Force</th><th>K Samraat</th><th>AMS</th><th>Seven Seas</th><th>Securise<span class="small">compliant</span></th><th>Securise<span class="small">non-compliant</span></th><th>Diksha</th><th>Unisec</th></tr></thead>
@@ -214,7 +255,7 @@ a{color:var(--accent)}
   </table></div>
 </section>
 
-<section>
+<section id="red-flags">
   <h2><span class="n">07</span>Red flags</h2>
   <div class="flags">
     <div class="f"><h3>Seven Seas</h3><ul>
@@ -263,7 +304,7 @@ a{color:var(--accent)}
   </div>
 </section>
 
-<section>
+<section id="before-deciding">
   <h2><span class="n">08</span>Before the committee decides</h2>
   <ol class="next">
     <li>Get the PSARA licence from Harrier, Beta Force, Seven Seas, Securise and Unisec, and proof of Diksha's renewal. Verify every licence on the state portal.</li>
